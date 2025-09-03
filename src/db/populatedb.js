@@ -1,0 +1,64 @@
+const { argv } = require("node:process");
+const { Client } = require("pg");
+
+const SQL = `
+CREATE TABLE IF NOT EXISTS project (
+  id INTEGER PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
+  name TEXT,
+  description TEXT,
+  source TEXT,
+  website TEXT,
+  image TEXT
+);
+
+CREATE TABLE IF NOT EXISTS category (
+  id INTEGER PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
+  name TEXT
+);
+
+CREATE TABLE IF NOT EXISTS language (
+  id INTEGER PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
+  name TEXT
+);
+
+CREATE TABLE IF NOT EXISTS tool (
+  id INTEGER PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
+  name TEXT
+);
+
+CREATE TABLE IF NOT EXISTS project_category (
+  project_id INTEGER REFERENCES project(id) ON DELETE CASCADE,
+  category_id INTEGER REFERENCES category(id) ON DELETE CASCADE,
+  PRIMARY KEY (project_id, category_id)
+);
+
+CREATE TABLE IF NOT EXISTS project_language (
+  project_id INTEGER REFERENCES project(id) ON DELETE CASCADE,
+  language_id INTEGER REFERENCES language(id) ON DELETE CASCADE,
+  PRIMARY KEY (project_id, language_id)
+);
+
+CREATE TABLE IF NOT EXISTS project_tool (
+  project_id INTEGER REFERENCES project(id) ON DELETE CASCADE,
+  tool_id INTEGER REFERENCES tool(id) ON DELETE CASCADE,
+  PRIMARY KEY (project_id, tool_id)
+);
+
+INSERT INTO messages (text, "user", added)
+VALUES 
+  ('Hi there!', 'Amando', '${now}'),
+  ('Hello world!', 'Charles', '${now}');
+`;
+
+async function main() {
+  console.log("seeding...");
+  const client = new Client({
+    connectionString: argv[2],
+  });
+  await client.connect();
+  await client.query(SQL);
+  await client.end();
+  console.log("done");
+}
+
+main();
