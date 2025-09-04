@@ -1,0 +1,204 @@
+CREATE TABLE IF NOT EXISTS project (
+  id INTEGER PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
+  name TEXT,
+  description TEXT,
+  features TEXT,
+  stack TEXT,
+  source TEXT,
+  website TEXT,
+  image TEXT
+);
+
+CREATE TABLE IF NOT EXISTS category (
+  id INTEGER PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
+  name TEXT
+);
+
+CREATE TABLE IF NOT EXISTS language (
+  id INTEGER PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
+  name TEXT
+);
+
+CREATE TABLE IF NOT EXISTS tool (
+  id INTEGER PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
+  name TEXT
+);
+
+CREATE TABLE IF NOT EXISTS project_category (
+  project_id INTEGER REFERENCES project(id) ON DELETE CASCADE,
+  category_id INTEGER REFERENCES category(id) ON DELETE CASCADE,
+  PRIMARY KEY (project_id, category_id)
+);
+
+CREATE TABLE IF NOT EXISTS project_language (
+  project_id INTEGER REFERENCES project(id) ON DELETE CASCADE,
+  language_id INTEGER REFERENCES language(id) ON DELETE CASCADE,
+  PRIMARY KEY (project_id, language_id)
+);
+
+CREATE TABLE IF NOT EXISTS project_tool (
+  project_id INTEGER REFERENCES project(id) ON DELETE CASCADE,
+  tool_id INTEGER REFERENCES tool(id) ON DELETE CASCADE,
+  PRIMARY KEY (project_id, tool_id)
+);
+
+INSERT INTO project (name, description, features, stack, source, website, image)
+VALUES 
+  (
+    'Shopping List', 
+    'A shopping list web where ones can add and remove items.',
+    E'Add items\nRemove items',
+    NULL, 
+    'https://github.com/gofhilman/shopping-list', 
+    'https://gofhilman.github.io/shopping-list/', 
+    $1
+  ),
+  (
+    'Odin Recipes', 
+    'A simple food recipe website using HTML and CSS only. This is my first web development project.',
+    E'Index page containing food recipe list\nRecipe pages in separated HTML',
+    NULL,
+    'https://github.com/gofhilman/odin-recipes',
+    'https://gofhilman.github.io/odin-recipes/',
+    $2
+  ),
+  (
+    'Odin Landing Page',
+    'My landing page using HTML and CSS only.',
+    'CSS styling with flexbox',
+    NULL,
+    'https://github.com/gofhilman/odin-landing-page',
+    'https://gofhilman.github.io/odin-landing-page/',
+    $3
+  ),
+  (
+    'Rock-Paper-Scissors Game',
+    'A web-based rock-paper-scissors game. It features computer opponent using random selection in 5-round match.',
+    E'Responsive design and interactive UI\nScore tracking for both player and computer\nRandomized computer moves for fair gameplay',
+    NULL,
+    'https://github.com/gofhilman/rock-paper-scissors',
+    'https://gofhilman.github.io/rock-paper-scissors/',
+    $4
+  ),
+  (
+    'Etch-A-Sketch',
+    'A web-based etch-a-sketch where ones can draw on the page based on the cursor movement. '
+    || 'It features grid number customization, multi-color drawing, increased opacity based on stacking, and repeatable drawing.',
+    'Grid number customization: Adjust the number of squares in the grid.'
+    || E'\nMulti-color drawing: Choose from a variety of colors to draw.'
+    || E'\nIncreased opacity: Stacking strokes increases the opacity of the color.'
+    || E'\nRepeatable drawing: Easily reset and redraw on the canvas.',
+    NULL,
+    'https://github.com/gofhilman/etch-a-sketch',
+    'https://gofhilman.github.io/etch-a-sketch/',
+    $5
+  ),
+  (
+    'Calculator',
+    'A simple calculator web application that performs basic arithmetic operations. It is designed to be user-friendly and efficient.',
+    'Error handling for invalid inputs and division by zero'
+    || E'\nSupport for decimal numbers'
+    || E'\nBackspace functionality to correct input errors'
+    || E'\nPlus-minus toggle for changing the sign of a number',
+    NULL,
+    'https://github.com/gofhilman/calculator',
+    'https://gofhilman.github.io/calculator/',
+    $6
+  ),
+  (
+    'Planet Table',
+    'This provides a solution for a challenge by MDN to structure a planet data table.',
+    'A table with multiple headings and subheadings',
+    NULL,
+    'https://github.com/gofhilman/planet-table',
+    'https://gofhilman.github.io/planet-table/',
+    $7
+  ),
+  (
+    'High School Python',
+    'An interactive teaching material for an introduction to data analysis with Python',
+    E'A teaching material with concepts and problems+solutions\nInteractive material with python notebook',
+    NULL,
+    'https://github.com/gofhilman/high-school-python',
+    'https://gofhilman.github.io/high-school-python/',
+    $8
+  ),
+  (
+    'Sign Up Form',
+    'Sign up form page with HTML form validation about house music website.',
+    E'Responsive and modern design\nHTML form validation on the client side',
+    NULL,
+    'https://github.com/gofhilman/sign-up-form',
+    'https://gofhilman.github.io/sign-up-form/',
+    $9
+  ),
+  (
+    'Admin Dashboard',
+    'A dashboard page with a visually appealing and functional interface for administrators using HTML and CSS only.',
+    'Incorporate flexbox and grid design for modern looks',
+    NULL,
+    'https://github.com/gofhilman/admin-dashboard',
+    'https://gofhilman.github.io/admin-dashboard/',
+    $10
+  ),
+  (
+    'Odin Library',
+    'A simple web application that allows users to manage their personal book collection. '
+    || 'Users can add books with details such as title, author, number of pages, and whether the book has been read. '
+    || 'The application dynamically updates the book list and provides an option to remove books from the collection.',
+    '<strong>Add Books</strong>: Users can add books by providing details like title, author, pages, and read status.'
+    || E'\n<strong>Dynamic Table</strong>: Books are displayed in a table format with columns for title, author, pages, read status, and actions.'
+    || E'\n<strong>Read Status</strong>: A checkbox allows users to mark whether a book has been read.'
+    || E'\n<strong>Remove Books</strong>: Users can remove books from the collection using a "remove" button.'
+    || E'\n<strong>Form Validation</strong>: Ensures that all required fields are filled before adding a book.',
+    NULL,
+    'https://github.com/gofhilman/odin-library',
+    'https://gofhilman.github.io/odin-library/',
+    $11
+  ),
+  (
+    'Tic-Tac-Toe',
+    'A simple implementation of the classic Tic-Tac-Toe game. '
+    || 'The game allows two players to compete against each other by taking turns to mark spaces in a 3x3 grid. '
+    || 'The player who succeeds in placing three of their marks in a horizontal, vertical, or diagonal row wins the game.',
+    '<strong>Player Name Input</strong>: Players can input their names before starting the game.'
+    || '\n<strong>Dynamic Turn Display</strong>: The game dynamically displays whose turn it is.'
+    || '\n<strong>Win and Draw Detection</strong>: The game detects and announces the winner or if the game ends in a draw.'
+    || '\n<strong>Interactive UI</strong>: Players can click on the grid to make their moves, and the game updates in real-time.'
+    || '\n<strong>Reset Functionality</strong>: Players can reset the game and start a new round easily.',
+    NULL,
+    'https://github.com/gofhilman/tic-tac-toe',
+    'https://gofhilman.github.io/tic-tac-toe/',
+    $12
+  ),
+  (
+    'Image Carousel',
+    'An image carousel package with an implementation example.',
+    '<strong>Responsive Design</strong>: Automatically adjusts to the specified frame dimensions.'
+    || '\n<strong>Swipe Navigation</strong>: Includes left and right swipe functionality for easy navigation.'
+    || '\n<strong>Navigation Dots</strong>: Displays dots for each slide, allowing users to jump to specific slides.'
+    || '\n<strong>Auto-Cycling</strong>: Automatically cycles through slides at a configurable interval.'
+    || '\n<strong>Customizable</strong>: Easily configurable styles and behaviors.',
+    NULL,
+    'https://github.com/gofhilman/image-carousel',
+    'https://www.npmjs.com/package/@gofhilman/image-carousel',
+    $13
+  ),
+  (
+    'Recursion',
+    'Create Fibonacci sequence and merge sort functions based on recursion method.',
+    '<code>fibs(seqNum)</code>: Generates a Fibonacci sequence iteratively up to the given number of terms.'
+    || '\n<code>fibsRec(seqNum)</code>: Generates a Fibonacci sequence recursively up to the given number of terms.'
+    || '\n<code>mergeSort(array)</code>: Implements the merge sort algorithm to sort an array of numbers in ascending order.'
+    || '\n<code>merge(sortedLeft, sortedRight)</code>: Merges two sorted arrays into a single sorted array.',
+    NULL,
+    'https://github.com/gofhilman/recursion',
+    NULL,
+    NULL
+  ),
+  (
+    'Linked List',
+    'This project creates a LinkedList class manually in JavaScript. The LinkedList class provides a dynamic data '
+    || 'structure that allows for efficient insertion, deletion, and traversal of elements. Each node in the linked list '
+    || 'contains a value and a reference to the next node, forming a chain-like structure.'
+  )
