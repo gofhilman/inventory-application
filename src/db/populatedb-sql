@@ -646,4 +646,72 @@ VALUES
     'https://github.com/gofhilman/cnn-classification',
     NULL,
     NULL
-  )
+  );
+
+INSERT INTO category (name)
+VALUES
+  ('featured'),
+  ('front end'),
+  ('back end'),
+  ('fullstack'),
+  ('vanilla'),
+  ('web development'),
+  ('game'),
+  ('tool'),
+  ('utility'),
+  ('data structure and algorithm'),
+  ('package'),
+  ('template'),
+  ('data analysis'),
+  ('simulation'),
+  ('machine learning');
+
+INSERT INTO language (name)
+VALUES
+  ('JavaScript'),
+  ('TypeScript'),
+  ('Python'),
+  ('MATLAB'),
+  ('Mathematica'),
+  ('Fortran'),
+  ('SQL'),
+  ('C++');
+
+INSERT INTO tool (name)
+VALUES
+  ('Jest'),
+  ('Babel'),
+  ('Webpack'),
+  ('PostCSS'),
+  ('Tailwind CSS'),
+  ('date-fns'),
+  ('PubSubJS'),
+  ('React'),
+  ('Vite'),
+  ('Vitest'),
+  ('Testing Library'),
+  ('React Router'),
+  ('shadcn/ui'),
+  ('Fuse.js'),
+  ('Next.js'),
+  ('Node.js'),
+  ('PostgreSQL'),
+  ('React Context API'),
+  ('Express.js'),
+  ('EJS'),
+  ('express-validator'),
+  ('Pandas'),
+  ('Matplotlib'),
+  ('scikit-learn'),
+  ('NumPy'),
+  ('Pillow'),
+  ('mlxtend'),
+  ('Seaborn'),
+  ('TensorFlow/Keras'),
+  ('OpenCV');
+
+WITH pair (project, category) AS (
+  VALUES
+    (),
+    (),
+)
