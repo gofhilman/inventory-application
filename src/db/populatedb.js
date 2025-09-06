@@ -9,7 +9,7 @@ async function main() {
     connectionString: argv[2],
   });
   await client.connect();
-  const SQL = await fs.readFile(path.join(__dirname, "populatedb-sql"), {
+  const SQL = await fs.readFile(path.join(__dirname, "populatedb.sql"), {
     encoding: "utf8",
   });
   await client.query(SQL,[]);
