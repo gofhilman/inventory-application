@@ -1,3 +1,47 @@
+CREATE TABLE IF NOT EXISTS project (
+  id INTEGER PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
+  name TEXT,
+  description TEXT,
+  features TEXT,
+  stack TEXT,
+  source TEXT,
+  website TEXT,
+  image TEXT
+);
+
+CREATE TABLE IF NOT EXISTS category (
+  id INTEGER PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
+  name TEXT
+);
+
+CREATE TABLE IF NOT EXISTS language (
+  id INTEGER PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
+  name TEXT
+);
+
+CREATE TABLE IF NOT EXISTS tool (
+  id INTEGER PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
+  name TEXT
+);
+
+CREATE TABLE IF NOT EXISTS project_category (
+  project_id INTEGER REFERENCES project(id) ON DELETE CASCADE,
+  category_id INTEGER REFERENCES category(id) ON DELETE CASCADE,
+  PRIMARY KEY (project_id, category_id)
+);
+
+CREATE TABLE IF NOT EXISTS project_language (
+  project_id INTEGER REFERENCES project(id) ON DELETE CASCADE,
+  language_id INTEGER REFERENCES language(id) ON DELETE CASCADE,
+  PRIMARY KEY (project_id, language_id)
+);
+
+CREATE TABLE IF NOT EXISTS project_tool (
+  project_id INTEGER REFERENCES project(id) ON DELETE CASCADE,
+  tool_id INTEGER REFERENCES tool(id) ON DELETE CASCADE,
+  PRIMARY KEY (project_id, tool_id)
+);
+
 INSERT INTO project (name, description, features, stack, source, website, image)
 VALUES 
   (
@@ -7,7 +51,7 @@ VALUES
     NULL, 
     'https://github.com/gofhilman/shopping-list', 
     'https://gofhilman.github.io/shopping-list/', 
-    $1
+    'https://i.ibb.co.com/LXN9L7Z6/01.png'
   ),
   (
     'Odin Recipes', 
@@ -16,7 +60,7 @@ VALUES
     NULL,
     'https://github.com/gofhilman/odin-recipes',
     'https://gofhilman.github.io/odin-recipes/',
-    $2
+    'https://i.ibb.co.com/P0fRjXs/02.png'
   ),
   (
     'Odin Landing Page',
@@ -25,7 +69,7 @@ VALUES
     NULL,
     'https://github.com/gofhilman/odin-landing-page',
     'https://gofhilman.github.io/odin-landing-page/',
-    $3
+    'https://i.ibb.co.com/7xVFCD5y/03.png'
   ),
   (
     'Rock-Paper-Scissors Game',
@@ -34,7 +78,7 @@ VALUES
     NULL,
     'https://github.com/gofhilman/rock-paper-scissors',
     'https://gofhilman.github.io/rock-paper-scissors/',
-    $4
+    'https://i.ibb.co.com/N2sJL8YB/04.png'
   ),
   (
     'Etch-A-Sketch',
@@ -47,7 +91,7 @@ VALUES
     NULL,
     'https://github.com/gofhilman/etch-a-sketch',
     'https://gofhilman.github.io/etch-a-sketch/',
-    $5
+    'https://i.ibb.co.com/qYH0Gg2G/05.png'
   ),
   (
     'Calculator',
@@ -59,7 +103,7 @@ VALUES
     NULL,
     'https://github.com/gofhilman/calculator',
     'https://gofhilman.github.io/calculator/',
-    $6
+    'https://i.ibb.co.com/7tP6wx64/06.png'
   ),
   (
     'Planet Table',
@@ -68,7 +112,7 @@ VALUES
     NULL,
     'https://github.com/gofhilman/planet-table',
     'https://gofhilman.github.io/planet-table/',
-    $7
+    'https://i.ibb.co.com/DfrWb0Xr/07.png'
   ),
   (
     'High School Python',
@@ -77,7 +121,7 @@ VALUES
     NULL,
     'https://github.com/gofhilman/high-school-python',
     'https://gofhilman.github.io/high-school-python/',
-    $8
+    'https://i.ibb.co.com/ymp2KV5s/08.png'
   ),
   (
     'Sign Up Form',
@@ -86,7 +130,7 @@ VALUES
     NULL,
     'https://github.com/gofhilman/sign-up-form',
     'https://gofhilman.github.io/sign-up-form/',
-    $9
+    'https://i.ibb.co.com/F47jLbdm/09.png'
   ),
   (
     'Admin Dashboard',
@@ -95,7 +139,7 @@ VALUES
     NULL,
     'https://github.com/gofhilman/admin-dashboard',
     'https://gofhilman.github.io/admin-dashboard/',
-    $10
+    'https://i.ibb.co.com/5XK57syL/10.png'
   ),
   (
     'Odin Library',
@@ -110,7 +154,7 @@ VALUES
     NULL,
     'https://github.com/gofhilman/odin-library',
     'https://gofhilman.github.io/odin-library/',
-    $11
+    'https://i.ibb.co.com/Gvq1rYWs/11.png'
   ),
   (
     'Tic-Tac-Toe',
@@ -125,7 +169,7 @@ VALUES
     NULL,
     'https://github.com/gofhilman/tic-tac-toe',
     'https://gofhilman.github.io/tic-tac-toe/',
-    $12
+    'https://i.ibb.co.com/C5YpbTp6/12.png'
   ),
   (
     'Image Carousel',
@@ -138,7 +182,7 @@ VALUES
     NULL,
     'https://github.com/gofhilman/image-carousel',
     'https://www.npmjs.com/package/@gofhilman/image-carousel',
-    $13
+    'https://i.ibb.co.com/6GXkx7q/13.png'
   ),
   (
     'Recursion',
@@ -232,7 +276,7 @@ VALUES
     NULL,
     'https://github.com/gofhilman/js-form-validation',
     'https://gofhilman.github.io/js-form-validation/',
-    $14
+    'https://i.ibb.co.com/8n1n33V8/14.png'
   ),
   (
     'Testing Practice',
@@ -287,7 +331,7 @@ VALUES
     || E'\n<strong>Image Optimization</strong>: Utilized plugins like imagemin for optimized image loading.',
     'https://github.com/gofhilman/restaurant-page',
     'https://gofhilman.github.io/restaurant-page/',
-    $15
+    'https://i.ibb.co.com/wZz7s2mb/15.png'
   ),
   (
     'To Do List',
@@ -307,7 +351,7 @@ VALUES
     || E'\n<strong>Lodash</strong>: Utility library for JavaScript.',
     'https://github.com/gofhilman/todo-list',
     'https://gofhilman.github.io/todo-list/',
-    $16
+    'https://i.ibb.co.com/xtpvLBBk/16.png'
   ),
   (
     'Weather App',
@@ -326,7 +370,7 @@ VALUES
     || E'\n<strong>API Ninjas World Time API</strong>: For fetching real-time location-based time.',
     'https://github.com/gofhilman/weather-app',
     'https://gofhilman.github.io/weather-app/',
-    $17
+    'https://i.ibb.co.com/0jQQVWyp/17.png'
   ),
   (
     'Battleship Game',
@@ -344,7 +388,7 @@ VALUES
     || E'\n<strong>State Management</strong>: PubSub-JS',
     'https://github.com/gofhilman/battleship',
     'https://gofhilman.github.io/battleship/',
-    $18
+    'https://i.ibb.co.com/JWkm5BQk/18.png'
   ),
   (
     'FMR Analysis',
@@ -393,7 +437,7 @@ VALUES
     || E'\n<strong>Optimization</strong>: Imagemin',
     'https://github.com/gofhilman/homepage',
     'https://gofhilman.github.io/homepage/',
-    $19
+    'https://i.ibb.co.com/nNHdHzBV/19.png'
   ),
   (
     'Vite + React Template',
@@ -430,7 +474,7 @@ VALUES
     || E'\n<strong>Development Tools</strong>: Prettier, ESLint',
     'https://github.com/gofhilman/cv-application',
     'https://cv-application-epd.pages.dev/',
-    $20
+    'https://i.ibb.co.com/BDXBR83/20.png'
   ),
   (
     'Pokémon Memory Card Game',
@@ -447,7 +491,7 @@ VALUES
     || E'\n<strong>Utilities</strong>: Prettier, ESLint',
     'https://github.com/gofhilman/memory-card',
     'https://memory-card-4lo.pages.dev/',
-    $21
+    'https://i.ibb.co.com/rKPvrzVw/21.png'
   ),
   (
     'ShopShop',
@@ -471,7 +515,7 @@ VALUES
     || E'\n<strong>ESLint + Prettier</strong>: Code linting and formatting',
     'https://github.com/gofhilman/shopping-cart',
     'https://shopping-cart-b3g.pages.dev/',
-    $22
+    'https://i.ibb.co.com/VW4x2Qjw/22.png'
   ),
   (
     'Next.js Dashboard App',
@@ -492,7 +536,7 @@ VALUES
     || E'\n<strong>Other Tools</strong>: Vercel for deployment',
     'https://github.com/gofhilman/nextjs-dashboard-app',
     'https://nextjs-dashboard-app-kappa-beryl.vercel.app',
-    $23
+    'https://i.ibb.co.com/HLsTGbbW/23.png'
   ),
   (
     'Basic Informational Site',
@@ -505,7 +549,7 @@ VALUES
     || E'\n<strong>File System</strong>: Node.js fs module for reading HTML files',
     'https://github.com/gofhilman/basic-informational-site',
     'https://basic-informational-site-1r1b.onrender.com/',
-    $24
+    'https://i.ibb.co.com/4v9zPH1/24.png'
   ),
   (
     'Mini Message Board',
@@ -520,7 +564,7 @@ VALUES
     || E'\n<strong>Utilities</strong>: date-fns for formatting dates, express-validator for input validation',
     'https://github.com/gofhilman/mini-message-board',
     'https://mini-message-board-9bsr.onrender.com/',
-    $25
+    'https://i.ibb.co.com/60kFPd90/25.png'
   ),
   (
     'Gerak Parabola',
@@ -604,3 +648,339 @@ VALUES
     NULL
   );
   
+INSERT INTO category (name)
+VALUES
+  ('featured'),
+  ('front end'),
+  ('back end'),
+  ('fullstack'),
+  ('vanilla'),
+  ('web development'),
+  ('game'),
+  ('tool'),
+  ('utility'),
+  ('data structure and algorithm'),
+  ('package'),
+  ('template'),
+  ('data analysis'),
+  ('simulation'),
+  ('machine learning');
+
+INSERT INTO language (name)
+VALUES
+  ('JavaScript'),
+  ('TypeScript'),
+  ('Python'),
+  ('MATLAB'),
+  ('Mathematica'),
+  ('Fortran'),
+  ('SQL'),
+  ('C++');
+
+INSERT INTO tool (name)
+VALUES
+  ('Jest'),
+  ('Babel'),
+  ('Webpack'),
+  ('PostCSS'),
+  ('Tailwind CSS'),
+  ('date-fns'),
+  ('PubSubJS'),
+  ('React'),
+  ('Vite'),
+  ('Vitest'),
+  ('Testing Library'),
+  ('React Router'),
+  ('shadcn/ui'),
+  ('Fuse.js'),
+  ('Next.js'),
+  ('Node.js'),
+  ('PostgreSQL'),
+  ('React Context API'),
+  ('Express.js'),
+  ('EJS'),
+  ('express-validator'),
+  ('Pandas'),
+  ('Matplotlib'),
+  ('scikit-learn'),
+  ('NumPy'),
+  ('Pillow'),
+  ('mlxtend'),
+  ('Seaborn'),
+  ('TensorFlow/Keras'),
+  ('OpenCV');
+
+WITH pair (project, category) AS (
+  VALUES
+    ('Shopping List', 'front end'),
+    ('Shopping List', 'vanilla'),
+    ('Shopping List', 'web development'),
+    ('Shopping List', 'tool'),
+    ('Odin Recipes', 'front end'),
+    ('Odin Recipes', 'vanilla'),
+    ('Odin Recipes', 'web development'),
+    ('Odin Landing Page', 'front end'),
+    ('Odin Landing Page', 'vanilla'),
+    ('Odin Landing Page', 'web development'),
+    ('Rock-Paper-Scissors Game', 'front end'),
+    ('Rock-Paper-Scissors Game', 'vanilla'),
+    ('Rock-Paper-Scissors Game', 'web development'),
+    ('Rock-Paper-Scissors Game', 'game'),
+    ('Etch-A-Sketch', 'front end'),
+    ('Etch-A-Sketch', 'vanilla'),
+    ('Etch-A-Sketch', 'web development'),
+    ('Etch-A-Sketch', 'tool'),
+    ('Calculator', 'front end'),
+    ('Calculator', 'vanilla'),
+    ('Calculator', 'web development'),
+    ('Calculator', 'tool'),
+    ('Planet Table', 'front end'),
+    ('Planet Table', 'vanilla'),
+    ('Planet Table', 'web development'),
+    ('High School Python', 'data analysis'),
+    ('Sign Up Form', 'front end'),
+    ('Sign Up Form', 'vanilla'),
+    ('Sign Up Form', 'web development'),
+    ('Admin Dashboard', 'front end'),
+    ('Admin Dashboard', 'vanilla'),
+    ('Admin Dashboard', 'web development'),
+    ('Odin Library', 'front end'),
+    ('Odin Library', 'vanilla'),
+    ('Odin Library', 'web development'),
+    ('Odin Library', 'tool'),
+    ('Tic-Tac-Toe', 'front end'),
+    ('Tic-Tac-Toe', 'vanilla'),
+    ('Tic-Tac-Toe', 'web development'),
+    ('Tic-Tac-Toe', 'game'),
+    ('Image Carousel', 'front end'),
+    ('Image Carousel', 'vanilla'),
+    ('Image Carousel', 'web development'),
+    ('Image Carousel', 'utility'),
+    ('Image Carousel', 'package'),
+    ('Recursion', 'vanilla'),
+    ('Recursion', 'utility'),
+    ('Recursion', 'data structure and algorithm'),
+    ('Linked List', 'vanilla'),
+    ('Linked List', 'utility'),
+    ('Linked List', 'data structure and algorithm'),
+    ('Hashmap', 'vanilla'),
+    ('Hashmap', 'utility'),
+    ('Hashmap', 'data structure and algorithm'),
+    ('Binary Search Trees', 'featured'),
+    ('Binary Search Trees', 'vanilla'),
+    ('Binary Search Trees', 'utility'),
+    ('Binary Search Trees', 'data structure and algorithm'),
+    ('Knights Travails', 'vanilla'),
+    ('Knights Travails', 'utility'),
+    ('Knights Travails', 'data structure and algorithm'),
+    ('JavaScript Form Validation', 'front end'),
+    ('JavaScript Form Validation', 'vanilla'),
+    ('JavaScript Form Validation', 'web development'),
+    ('Testing Practice', 'vanilla'),
+    ('Testing Practice', 'utility'),
+    ('Webpack Front End Template', 'front end'),
+    ('Webpack Front End Template', 'web development'),
+    ('Webpack Front End Template', 'template'),
+    ('Restaurant Page', 'front end'),
+    ('Restaurant Page', 'vanilla'),
+    ('Restaurant Page', 'web development'),
+    ('To Do List', 'featured'),
+    ('To Do List', 'front end'),
+    ('To Do List', 'vanilla'),
+    ('To Do List', 'web development'),
+    ('To Do List', 'tool'),
+    ('Weather App', 'featured'),
+    ('Weather App', 'front end'),
+    ('Weather App', 'vanilla'),
+    ('Weather App', 'web development'),
+    ('Weather App', 'tool'),
+    ('Battleship Game', 'featured'),
+    ('Battleship Game', 'front end'),
+    ('Battleship Game', 'vanilla'),
+    ('Battleship Game', 'web development'),
+    ('Battleship Game', 'game'),
+    ('FMR Analysis', 'tool'),
+    ('FMR Analysis', 'data analysis'),
+    ('Multiple Sphere T-Matrix', 'tool'),
+    ('Multiple Sphere T-Matrix', 'data analysis'),
+    ('Multiple Sphere T-Matrix', 'simulation'),
+    ('Home Page', 'featured'),
+    ('Home Page', 'front end'),
+    ('Home Page', 'vanilla'),
+    ('Home Page', 'web development'),
+    ('Vite + React Template', 'front end'),
+    ('Vite + React Template', 'web development'),
+    ('Vite + React Template', 'template'),
+    ('CV Application', 'featured'),
+    ('CV Application', 'front end'),
+    ('CV Application', 'web development'),
+    ('CV Application', 'tool'),
+    ('Pokémon Memory Card Game', 'front end'),
+    ('Pokémon Memory Card Game', 'web development'),
+    ('Pokémon Memory Card Game', 'game'),
+    ('ShopShop', 'featured'),
+    ('ShopShop', 'front end'),
+    ('ShopShop', 'web development'),
+    ('Next.js Dashboard App', 'fullstack'),
+    ('Next.js Dashboard App', 'web development'),
+    ('Next.js Dashboard App', 'tool'),
+    ('Basic Informational Site', 'back end'),
+    ('Basic Informational Site', 'web development'),
+    ('Mini Message Board', 'fullstack'),
+    ('Mini Message Board', 'web development'),
+    ('Gerak Parabola', 'vanilla'),
+    ('Gerak Parabola', 'simulation'),
+    ('Regresi', 'data analysis'),
+    ('Regresi', 'machine learning'),
+    ('Klasifikasi dengan EMNIST dan Gambar Pindai', 'data analysis'),
+    ('Klasifikasi dengan EMNIST dan Gambar Pindai', 'machine learning'),
+    ('Prediksi Seedling', 'data analysis'),
+    ('Prediksi Seedling', 'machine learning'),
+    ('Klasifikasi CNN', 'data analysis'),
+    ('Klasifikasi CNN', 'machine learning')
+)
+INSERT INTO project_category (project_id, category_id)
+SELECT project.id, category.id
+FROM pair
+JOIN project ON project.name = pair.project
+JOIN category ON category.name = pair.category
+WHERE NOT EXISTS (
+  SELECT 1 FROM project_category
+  WHERE project_category.project_id = project.id
+    AND project_category.category_id = category.id
+);
+
+WITH pair (project, language) AS (
+  VALUES
+    ('Shopping List', 'JavaScript'),
+    ('Rock-Paper-Scissors Game', 'JavaScript'),
+    ('Etch-A-Sketch', 'JavaScript'),
+    ('Calculator', 'JavaScript'),
+    ('High School Python', 'Python'),
+    ('Odin Library', 'JavaScript'),
+    ('Tic-Tac-Toe', 'JavaScript'),
+    ('Image Carousel', 'JavaScript'),
+    ('Recursion', 'JavaScript'),
+    ('Linked List', 'JavaScript'),
+    ('Hashmap', 'JavaScript'),
+    ('Binary Search Trees', 'JavaScript'),
+    ('Knights Travails', 'JavaScript'),
+    ('JavaScript Form Validation', 'JavaScript'),
+    ('Testing Practice', 'JavaScript'),
+    ('Webpack Front End Template', 'JavaScript'),
+    ('Restaurant Page', 'JavaScript'),
+    ('To Do List', 'JavaScript'),
+    ('Weather App', 'JavaScript'),
+    ('Battleship Game', 'JavaScript'),
+    ('FMR Analysis', 'MATLAB'),
+    ('Multiple Sphere T-Matrix', 'Fortran'),
+    ('Multiple Sphere T-Matrix', 'Mathematica'),
+    ('Home Page', 'JavaScript'),
+    ('Vite + React Template', 'JavaScript'),
+    ('CV Application', 'JavaScript'),
+    ('Pokémon Memory Card Game', 'JavaScript'),
+    ('ShopShop', 'JavaScript'),
+    ('Next.js Dashboard App', 'TypeScript'),
+    ('Basic Informational Site', 'JavaScript'),
+    ('Mini Message Board', 'JavaScript'),
+    ('Mini Message Board', 'SQL'),
+    ('Gerak Parabola', 'C++'),
+    ('Regresi', 'Python'),
+    ('Klasifikasi dengan EMNIST dan Gambar Pindai', 'Python'),
+    ('Prediksi Seedling', 'Python'),
+    ('Klasifikasi CNN', 'Python')
+)
+INSERT INTO project_language (project_id, language_id)
+SELECT project.id, language.id
+FROM pair
+JOIN project ON project.name = pair.project
+JOIN language ON language.name = pair.language
+WHERE NOT EXISTS (
+  SELECT 1 FROM project_language
+  WHERE project_language.project_id = project.id
+    AND project_language.language_id = language.id
+);
+
+WITH pair (project, tool) AS (
+  VALUES
+    ('Testing Practice', 'Jest'),
+    ('Testing Practice', 'Babel'),
+    ('Webpack Front End Template', 'Webpack'),
+    ('Webpack Front End Template', 'Babel'),
+    ('Webpack Front End Template', 'PostCSS'),
+    ('Webpack Front End Template', 'Tailwind CSS'),
+    ('Webpack Front End Template', 'Jest'),
+    ('Restaurant Page', 'Webpack'),
+    ('To Do List', 'Webpack'),
+    ('To Do List', 'date-fns'),
+    ('Weather App', 'Webpack'),
+    ('Weather App', 'date-fns'),
+    ('Battleship Game', 'Webpack'),
+    ('Battleship Game', 'Jest'),
+    ('Battleship Game', 'PubSubJS'),
+    ('Home Page', 'Webpack'),
+    ('Home Page', 'Tailwind CSS'),
+    ('Home Page', 'PostCSS'),
+    ('Vite + React Template', 'React'),
+    ('Vite + React Template', 'Tailwind CSS'),
+    ('Vite + React Template', 'Vite'),
+    ('Vite + React Template', 'Vitest'),
+    ('Vite + React Template', 'Testing Library'),
+    ('Vite + React Template', 'React Router'),
+    ('Vite + React Template', 'shadcn/ui'),
+    ('CV Application', 'React'),
+    ('CV Application', 'Tailwind CSS'),
+    ('CV Application', 'Vite'),
+    ('Pokémon Memory Card Game', 'React'),
+    ('Pokémon Memory Card Game', 'Tailwind CSS'),
+    ('Pokémon Memory Card Game', 'Vite'),
+    ('ShopShop', 'React'),
+    ('ShopShop', 'Tailwind CSS'),
+    ('ShopShop', 'Vite'),
+    ('ShopShop', 'Vitest'),
+    ('ShopShop', 'Testing Library'),
+    ('ShopShop', 'React Router'),
+    ('ShopShop', 'shadcn/ui'),
+    ('ShopShop', 'Fuse.js'),
+    ('Next.js Dashboard App', 'React'),
+    ('Next.js Dashboard App', 'Tailwind CSS'),
+    ('Next.js Dashboard App', 'Next.js'),
+    ('Next.js Dashboard App', 'Node.js'),
+    ('Next.js Dashboard App', 'PostgreSQL'),
+    ('Next.js Dashboard App', 'React Context API'),
+    ('Basic Informational Site', 'Node.js'),
+    ('Basic Informational Site', 'Express.js'),
+    ('Mini Message Board', 'Node.js'),
+    ('Mini Message Board', 'Express.js'),
+    ('Mini Message Board', 'EJS'),
+    ('Mini Message Board', 'PostgreSQL'),
+    ('Mini Message Board', 'date-fns'),
+    ('Mini Message Board', 'express-validator'),
+    ('Regresi', 'Pandas'),
+    ('Regresi', 'Matplotlib'),
+    ('Regresi', 'scikit-learn'),
+    ('Klasifikasi dengan EMNIST dan Gambar Pindai', 'NumPy'),
+    ('Klasifikasi dengan EMNIST dan Gambar Pindai', 'Matplotlib'),
+    ('Klasifikasi dengan EMNIST dan Gambar Pindai', 'scikit-learn'),
+    ('Klasifikasi dengan EMNIST dan Gambar Pindai', 'Pillow'),
+    ('Klasifikasi dengan EMNIST dan Gambar Pindai', 'mlxtend'),
+    ('Prediksi Seedling', 'NumPy'),
+    ('Prediksi Seedling', 'Matplotlib'),
+    ('Prediksi Seedling', 'scikit-learn'),
+    ('Prediksi Seedling', 'Pandas'),
+    ('Prediksi Seedling', 'Seaborn'),
+    ('Klasifikasi CNN', 'NumPy'),
+    ('Klasifikasi CNN', 'Matplotlib'),
+    ('Klasifikasi CNN', 'TensorFlow/Keras'),
+    ('Klasifikasi CNN', 'OpenCV')
+)
+INSERT INTO project_tool (project_id, tool_id)
+SELECT project.id, tool.id
+FROM pair
+JOIN project ON project.name = pair.project
+JOIN tool ON tool.name = pair.tool
+WHERE NOT EXISTS (
+  SELECT 1 FROM project_tool
+  WHERE project_tool.project_id = project.id
+    AND project_tool.tool_id = tool.id
+);
