@@ -61,4 +61,19 @@ async function getFilteredProjects(category, language, tool, page) {
 //   console.log(res)
 // );
 
-module.exports = { getAllFilters, getFilteredProjects };
+async function insertProject(
+  name,
+  description,
+  features,
+  stack,
+  source,
+  website,
+  image,
+  category,
+  language,
+  tool
+) {
+  // to do
+}
+
+module.exports = { getAllFilters, getFilteredProjects, insertProject };
