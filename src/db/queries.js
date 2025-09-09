@@ -1,4 +1,4 @@
-// require("dotenv").config();
+require("dotenv").config();
 const pool = require("./pool");
 
 const ITEMS_PER_PAGE = 10;
@@ -75,8 +75,32 @@ async function insertProject(
 ) {
   const { rows } = await pool.query(`SELECT MAX(id) AS max_id FROM project;`);
   const id = rows[0].max_id + 1;
-  // to do
-  await pool.query();
+  await pool.query(
+    `INSERT INTO project (name, description, features, stack, source, website, image)
+    VALUES ($1, $2, $3, $4, $5, $6, $7);`,
+    [name, description, features, stack, source, website, image]
+  );
+  let filters = [
+    { type: "category", name: category },
+    { type: "language", name: language },
+    { type: "tool", name: tool },
+  ];
+  filters = await Promise.all(
+    filters.map(async (filter) => {
+      if (!filter.name) return filter;
+      filter.name = await Promise.all(
+        filter.name.map(async (item) => {
+          const { rows } = await pool.query(
+            `SELECT id FROM ${filter.type} WHERE name ILIKE $1`,
+            [item]
+          );
+          return { name: item, id: rows[0]?.id ?? null };
+        })
+      );
+      return filter;
+    })
+  );
+  // to do: add filters to tables and connecting tables
 }
 
 module.exports = { getAllFilters, getFilteredProjects, insertProject };
