@@ -1,4 +1,7 @@
+// require("dotenv").config();
 const pool = require("./pool");
+
+const ITEMS_PER_PAGE = 10;
 
 async function getQueryNameList(sql) {
   const { rows } = await pool.query(sql);
@@ -14,32 +17,48 @@ async function getAllFilters() {
   return { categories, languages, tools };
 }
 
-async function getFilteredProjects(category, language, tool) {
+async function getFilteredProjects(category, language, tool, page) {
   const filters = [
-    { id: category, sql: `category.id = $1` },
-    { id: language, sql: `language.id = $2` },
-    { id: tool, sql: `tool.id = $3` },
+    { id: category, name: "category" },
+    { id: language, name: "language" },
+    { id: tool, name: "tool" },
   ];
+  const modFilters = filters.filter((item) => item.id);
+  const sqlParams = modFilters.map((item) => item.id);
+  const createFilter = (index, filterName) =>
+    `project.id IN (SELECT project_id FROM project_${filterName} WHERE ${filterName}_id = $${index})`;
   const baseSql = `
     SELECT DISTINCT project.id AS project_id, project.name, description, source, image, category.name AS category
     FROM project
     LEFT JOIN project_category ON project_category.project_id = project.id
     LEFT JOIN category ON category.id = project_category.category_id
-    LEFT JOIN project_language ON project_language.project_id = project.id
-    LEFT JOIN language ON language.id = project_language.language_id
-    LEFT JOIN project_tool ON project_tool.project_id = project.id
-    LEFT JOIN tool ON tool.id = project_tool.tool_id
   `;
-  const filterSql = filters
-    .filter((item) => item.id)
-    .map((item) => item.sql)
+  const filterSql = modFilters
+    .map((item, index) => createFilter(index + 1, item.name))
     .join(` AND `);
   const closingSql = `
-    ORDER BY project_id;
+    ORDER BY project_id DESC;
   `;
   const sql = baseSql + (filterSql ? `WHERE ` + filterSql : ``) + closingSql;
-  const { rows } = await pool.query(sql, [category, language, tool]);
-  // to do: reduce
+  const { rows } = await pool.query(sql, sqlParams);
+  return rows
+    .reduce((acc, row) => {
+      if (
+        acc.length === 0 ||
+        acc[acc.length - 1].project_id !== row.project_id
+      ) {
+        row.category = [row.category];
+        acc.push(row);
+      } else {
+        acc[acc.length - 1].category.push(row.category);
+      }
+      return acc;
+    }, [])
+    .slice((page - 1) * ITEMS_PER_PAGE, page * ITEMS_PER_PAGE);
 }
+
+// getFilteredProjects(undefined, undefined, undefined, 2).then((res) =>
+//   console.log(res)
+// );
 
 module.exports = { getAllFilters, getFilteredProjects };
