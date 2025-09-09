@@ -5,6 +5,8 @@ const {
   insertProject,
 } = require("../db/queries");
 
+const emptyToNull = (string) => string || null;
+
 const validateMessage = [
   body("password")
     .notEmpty()
@@ -21,6 +23,20 @@ const validateMessage = [
       "Darling, this project needs a name, not a ghost. Give her identity, " +
         "or she's not stepping onto the stage."
     ),
+  ...["source", "website", "image"].map((field) =>
+    body(field)
+      .optional({ values: "falsy" })
+      .trim()
+      .isURL()
+      .withMessage(
+        `Darling, the project ${field} link is giving confusion, not connection. ` +
+          `Drop a valid URL or let her rest.`
+      )
+      .customSanitizer(emptyToNull)
+  ),
+  ...["description", "features", "stack", "category", "language", "tool"].map(
+    (field) => body(field).trim().customSanitizer(emptyToNull)
+  ),
 ];
 
 async function filteredProjectGet(req, res) {
@@ -49,7 +65,7 @@ const projectFormPost = [
     if (!errors.isEmpty()) {
       // view
     }
-    const {
+    let {
       name,
       description,
       features,
@@ -61,8 +77,9 @@ const projectFormPost = [
       language,
       tool,
     } = req.body;
-    [category, language, tool] = [category, language, tool].map((csv) =>
-      csv.split(",").map((string) => string.trim())
+    [category, language, tool] = [category, language, tool].map(
+      (csv) =>
+        csv?.split(",").map((string) => string.trim().toLowerCase()) || null
     );
     await insertProject(
       name,

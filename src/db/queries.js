@@ -73,7 +73,10 @@ async function insertProject(
   language,
   tool
 ) {
+  const { rows } = await pool.query(`SELECT MAX(id) AS max_id FROM project;`);
+  const id = rows[0].max_id + 1;
   // to do
+  await pool.query();
 }
 
 module.exports = { getAllFilters, getFilteredProjects, insertProject };
