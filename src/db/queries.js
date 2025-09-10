@@ -28,10 +28,8 @@ async function getFilteredProjects(category, language, tool, page) {
   const createFilter = (index, filterName) =>
     `project.id IN (SELECT project_id FROM project_${filterName} WHERE ${filterName}_id = $${index})`;
   const baseSql = `
-    SELECT DISTINCT project.id AS project_id, project.name, description, source, image, category.name AS category
+    SELECT project.id AS project_id, project.name, description, source, image
     FROM project
-    LEFT JOIN project_category ON project_category.project_id = project.id
-    LEFT JOIN category ON category.id = project_category.category_id
   `;
   const filterSql = modFilters
     .map((item, index) => createFilter(index + 1, item.name))
@@ -41,23 +39,23 @@ async function getFilteredProjects(category, language, tool, page) {
   `;
   const sql = baseSql + (filterSql ? `WHERE ` + filterSql : ``) + closingSql;
   const { rows } = await pool.query(sql, sqlParams);
-  return rows
-    .reduce((acc, row) => {
-      if (
-        acc.length === 0 ||
-        acc[acc.length - 1].project_id !== row.project_id
-      ) {
-        row.category = [row.category];
-        acc.push(row);
-      } else {
-        acc[acc.length - 1].category.push(row.category);
-      }
-      return acc;
-    }, [])
-    .slice((page - 1) * ITEMS_PER_PAGE, page * ITEMS_PER_PAGE);
+  const result = await Promise.all(
+    rows.map(async (row) => {
+      const { rows: categoryRows } = await pool.query(
+        `SELECT name FROM category 
+        JOIN project_category ON project_category.category_id = category.id
+        WHERE project_id = $1
+        ORDER BY id;`,
+        [row.project_id]
+      );
+      row.category = categoryRows.map((item) => item.name);
+      return row;
+    })
+  );
+  return result.slice((page - 1) * ITEMS_PER_PAGE, page * ITEMS_PER_PAGE);
 }
 
-// getFilteredProjects(undefined, undefined, undefined, 2).then((res) =>
+// getFilteredProjects(1, undefined, undefined, 1).then((res) =>
 //   console.log(res)
 // );
 
@@ -113,7 +111,7 @@ async function insertProject(
         }
         await pool.query(
           `INSERT INTO project_${filter.type} (project_id, ${filter.type}_id) VALUES ($1, $2)
-          ON CONFLICT DO NOTHING`,
+          ON CONFLICT DO NOTHING;`,
           [projectId, item.id]
         );
       }
@@ -123,17 +121,22 @@ async function insertProject(
 }
 
 async function getProject(projectId) {
-  const { rows } = await pool.query(
-    `SELECT DISTINCT project.name, description, source, image, category.name AS category, language.name AS language, tool.name AS tool
-    FROM project
-    LEFT JOIN project_category ON project_category.project_id = project.id
-    LEFT JOIN category ON category.id = project_category.category_id
-    LEFT JOIN project_language ON project_language.project_id = project.id
-    LEFT JOIN language ON language.id = project_language.language_id
-    LEFT JOIN project_tool ON project_tool.project_id = project.id
-    LEFT JOIN tool ON tool.id = project_tool.tool_id
-    WHERE project.id = $1;`,
+  const { rows: projectRows } = await pool.query(
+    `SELECT name, description, features, stack, source, website, image
+    FROM project WHERE id = $1;`,
     [projectId]
+  );
+  const [categoryRows, languageRows, toolRows] = await Promise.all(
+    ["category", "language", "tool"].map(async (item) => {
+      const { rows } = await pool.query(
+        `SELECT name FROM ${item} 
+        JOIN project_${item} ON project_${item}.${item}_id = ${item}.id
+        WHERE project_id = $1
+        ORDER BY id;`,
+        [projectId]
+      );
+      return rows;
+    })
   );
   // TBC
 }
