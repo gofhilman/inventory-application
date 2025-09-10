@@ -122,4 +122,25 @@ async function insertProject(
   return projectId;
 }
 
-module.exports = { getAllFilters, getFilteredProjects, insertProject };
+async function getProject(projectId) {
+  const { rows } = await pool.query(
+    `SELECT DISTINCT project.name, description, source, image, category.name AS category, language.name AS language, tool.name AS tool
+    FROM project
+    LEFT JOIN project_category ON project_category.project_id = project.id
+    LEFT JOIN category ON category.id = project_category.category_id
+    LEFT JOIN project_language ON project_language.project_id = project.id
+    LEFT JOIN language ON language.id = project_language.language_id
+    LEFT JOIN project_tool ON project_tool.project_id = project.id
+    LEFT JOIN tool ON tool.id = project_tool.tool_id
+    WHERE project.id = $1;`,
+    [projectId]
+  );
+  // TBC
+}
+
+module.exports = {
+  getAllFilters,
+  getFilteredProjects,
+  insertProject,
+  getProject,
+};
