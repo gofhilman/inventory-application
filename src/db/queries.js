@@ -138,8 +138,14 @@ async function getProject(projectId) {
       return rows;
     })
   );
-  // TBC
+  const result = projectRows[0];
+  result.category = categoryRows.map((row) => row.name);
+  result.language = languageRows.map((row) => row.name);
+  result.tool = toolRows.map((row) => row.name);
+  return result;
 }
+
+// getProject(35).then((res) => console.log(res));
 
 module.exports = {
   getAllFilters,
