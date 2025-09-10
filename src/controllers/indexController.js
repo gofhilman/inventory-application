@@ -80,7 +80,7 @@ const projectFormPost = [
     [category, language, tool] = [category, language, tool].map(
       (csv) => csv?.split(",").map((string) => string.trim()) || null
     );
-    await insertProject(
+    const projectId = await insertProject(
       name,
       description,
       features,
@@ -92,7 +92,7 @@ const projectFormPost = [
       language,
       tool
     );
-    res.redirect("/?category=featured&page=1");
+    res.redirect(`/project/${projectId}`);
   },
 ];
 

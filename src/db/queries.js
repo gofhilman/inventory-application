@@ -1,4 +1,4 @@
-require("dotenv").config();
+// require("dotenv").config();
 const pool = require("./pool");
 
 const ITEMS_PER_PAGE = 10;
@@ -73,13 +73,13 @@ async function insertProject(
   language,
   tool
 ) {
-  const { rows } = await pool.query(`SELECT MAX(id) AS max_id FROM project;`);
-  const id = rows[0].max_id + 1;
-  await pool.query(
+  const { rows } = await pool.query(
     `INSERT INTO project (name, description, features, stack, source, website, image)
-    VALUES ($1, $2, $3, $4, $5, $6, $7);`,
+    VALUES ($1, $2, $3, $4, $5, $6, $7)
+    RETURNING id;`,
     [name, description, features, stack, source, website, image]
   );
+  const projectId = rows[0].id;
   let filters = [
     { type: "category", name: category },
     { type: "language", name: language },
@@ -91,7 +91,7 @@ async function insertProject(
       filter.name = await Promise.all(
         filter.name.map(async (item) => {
           const { rows } = await pool.query(
-            `SELECT id FROM ${filter.type} WHERE name ILIKE $1`,
+            `SELECT id FROM ${filter.type} WHERE name ILIKE $1;`,
             [item]
           );
           return { name: item, id: rows[0]?.id ?? null };
@@ -100,7 +100,26 @@ async function insertProject(
       return filter;
     })
   );
-  // to do: add filters to tables and connecting tables
+  // filters = [{type, name: [{name, id}, ...]}, ...]
+  for (const filter of filters) {
+    if (filter.name) {
+      for (const item of filter.name) {
+        if (!item.id) {
+          const { rows } = await pool.query(
+            `INSERT INTO ${filter.type} (name) VALUES ($1) ON CONFLICT DO NOTHING RETURNING id;`,
+            [item.name]
+          );
+          item.id = rows[0].id;
+        }
+        await pool.query(
+          `INSERT INTO project_${filter.type} (project_id, ${filter.type}_id) VALUES ($1, $2)
+          ON CONFLICT DO NOTHING`,
+          [projectId, item.id]
+        );
+      }
+    }
+  }
+  return projectId;
 }
 
 module.exports = { getAllFilters, getFilteredProjects, insertProject };
