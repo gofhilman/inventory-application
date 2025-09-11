@@ -172,10 +172,20 @@ async function updateProject(
   await insertFilters(projectId, category, language, tool);
 }
 
+async function deleteProject(projectId) {
+  await pool.query(`DELETE FROM project WHERE id = $1;`, [projectId]);
+  for (const filter of ["category", "language", "tool"]) {
+    await pool.query(
+      `DELETE FROM ${filter} WHERE id NOT IN (SELECT ${filter}_id FROM project_${filter});`
+    );
+  }
+}
+
 module.exports = {
   getAllFilters,
   getFilteredProjects,
   insertProject,
   getProject,
   updateProject,
+  deleteProject,
 };

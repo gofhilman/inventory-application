@@ -1,5 +1,5 @@
 const { validationResult } = require("express-validator");
-const { getProject, updateProject } = require("../db/queries");
+const { getProject, updateProject, deleteProject } = require("../db/queries");
 const validateMessage = require("../lib/form-validation");
 
 async function projectGet(req, res) {
@@ -59,7 +59,11 @@ const projectEditPost = [
   },
 ];
 
-async function projectDeletePost(params) {}
+async function projectDeletePost(req, res) {
+  const { projectId } = req.params;
+  await deleteProject(projectId);
+  res.redirect("/?category=featured&page=1");
+}
 
 module.exports = {
   projectGet,

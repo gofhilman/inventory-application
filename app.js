@@ -8,8 +8,7 @@ const app = express();
 app.use(express.urlencoded({ extended: true }));
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "ejs");
-const stylePath = path.join(__dirname, "styles");
-app.use(express.static(stylePath));
+app.use(express.static(path.join(__dirname, "public")));
 
 app.use("/project", projectRouter);
 app.use("/", indexRouter);
