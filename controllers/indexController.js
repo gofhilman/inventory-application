@@ -18,11 +18,16 @@ async function filteredProjectGet(req, res) {
     tool,
     page
   );
-  // view
+  res.render("main-layout", {
+    filters,
+    filteredProjects,
+    page: "index",
+    title: "Home",
+  });
 }
 
 async function projectFormGet(_, res) {
-  // view
+  res.render("main-layout", { page: "new-project", title: "New project" });
 }
 
 const projectFormPost = [
@@ -30,7 +35,11 @@ const projectFormPost = [
   async (req, res) => {
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
-      // view
+      return res.status(400).render("main-layout", {
+        page: "new-project",
+        title: "New project",
+        errors: errors.array(),
+      });
     }
     let {
       name,

@@ -5,7 +5,12 @@ const validateMessage = require("../lib/form-validation");
 async function projectGet(req, res) {
   const { projectId } = req.params;
   const project = await getProject(projectId);
-  // view
+  res.render("main-layout", {
+    projectId,
+    project,
+    page: "project",
+    title: project.name,
+  });
 }
 
 async function projectEditGet(req, res) {
@@ -16,17 +21,28 @@ async function projectEditGet(req, res) {
     project.language,
     project.tool,
   ].map((item) => item.join(", "));
-  // view
+  res.render("main-layout", {
+    projectId,
+    project,
+    page: "edit-project",
+    title: "Edit project",
+  });
 }
 
 const projectEditPost = [
   validateMessage,
   async (req, res) => {
+    const { projectId } = req.params;
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
-      // view
+      return res.status(400).render("main-layout", {
+        projectId,
+        project: req.body,
+        page: "edit-project",
+        title: "Edit project",
+        errors: errors.array(),
+      });
     }
-    const { projectId } = req.params;
     let {
       name,
       description,
