@@ -8,6 +8,47 @@ async function getQueryNameList(sql) {
   return rows;
 }
 
+async function insertFilters(projectId, category, language, tool) {
+  let filters = [
+    { type: "category", name: category },
+    { type: "language", name: language },
+    { type: "tool", name: tool },
+  ];
+  filters = await Promise.all(
+    filters.map(async (filter) => {
+      filter.name = await Promise.all(
+        filter.name.map(async (item) => {
+          const { rows } = await pool.query(
+            `SELECT id FROM ${filter.type} WHERE name ILIKE $1;`,
+            [item]
+          );
+          return { name: item, id: rows[0]?.id ?? null };
+        })
+      );
+      return filter;
+    })
+  );
+  // filters = [{type, name: [{name, id}, ...]}, ...]
+  for (const filter of filters) {
+    if (filter.name.length > 0) {
+      for (const item of filter.name) {
+        if (!item.id) {
+          const { rows } = await pool.query(
+            `INSERT INTO ${filter.type} (name) VALUES ($1) ON CONFLICT DO NOTHING RETURNING id;`,
+            [item.name]
+          );
+          item.id = rows[0].id;
+        }
+        await pool.query(
+          `INSERT INTO project_${filter.type} (project_id, ${filter.type}_id) VALUES ($1, $2)
+          ON CONFLICT DO NOTHING;`,
+          [projectId, item.id]
+        );
+      }
+    }
+  }
+}
+
 async function getAllFilters() {
   const [categories, languages, tools] = await Promise.all([
     getQueryNameList(`SELECT * FROM category;`),
@@ -78,44 +119,7 @@ async function insertProject(
     [name, description, features, stack, source, website, image]
   );
   const projectId = rows[0].id;
-  let filters = [
-    { type: "category", name: category },
-    { type: "language", name: language },
-    { type: "tool", name: tool },
-  ];
-  filters = await Promise.all(
-    filters.map(async (filter) => {
-      filter.name = await Promise.all(
-        filter.name.map(async (item) => {
-          const { rows } = await pool.query(
-            `SELECT id FROM ${filter.type} WHERE name ILIKE $1;`,
-            [item]
-          );
-          return { name: item, id: rows[0]?.id ?? null };
-        })
-      );
-      return filter;
-    })
-  );
-  // filters = [{type, name: [{name, id}, ...]}, ...]
-  for (const filter of filters) {
-    if (filter.name.length > 0) {
-      for (const item of filter.name) {
-        if (!item.id) {
-          const { rows } = await pool.query(
-            `INSERT INTO ${filter.type} (name) VALUES ($1) ON CONFLICT DO NOTHING RETURNING id;`,
-            [item.name]
-          );
-          item.id = rows[0].id;
-        }
-        await pool.query(
-          `INSERT INTO project_${filter.type} (project_id, ${filter.type}_id) VALUES ($1, $2)
-          ON CONFLICT DO NOTHING;`,
-          [projectId, item.id]
-        );
-      }
-    }
-  }
+  await insertFilters(projectId, category, language, tool);
   return projectId;
 }
 
@@ -146,9 +150,32 @@ async function getProject(projectId) {
 
 // getProject(15).then((res) => console.log(res));
 
+async function updateProject(
+  projectId,
+  name,
+  description,
+  features,
+  stack,
+  source,
+  website,
+  image,
+  category,
+  language,
+  tool
+) {
+  await pool.query(
+    `UPDATE project 
+    SET name = $1, description = $2, features = $3, stack = $4, source = $5, website = $6, image = $7
+    WHERE id = $8;`,
+    [name, description, features, stack, source, website, image, projectId]
+  );
+  await insertFilters(projectId, category, language, tool);
+}
+
 module.exports = {
   getAllFilters,
   getFilteredProjects,
   insertProject,
   getProject,
+  updateProject,
 };
