@@ -1,7 +1,5 @@
 const { body } = require("express-validator");
 
-const emptyToNull = (string) => string || null;
-
 const validateMessage = [
   body("password")
     .notEmpty()
@@ -27,10 +25,9 @@ const validateMessage = [
         `Darling, the project ${field} link is giving confusion, not connection. ` +
           `Drop a valid URL or let her rest.`
       )
-      .customSanitizer(emptyToNull)
   ),
   ...["description", "features", "stack", "category", "language", "tool"].map(
-    (field) => body(field).trim().customSanitizer(emptyToNull)
+    (field) => body(field).trim()
   ),
 ];
 

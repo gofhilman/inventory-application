@@ -85,7 +85,6 @@ async function insertProject(
   ];
   filters = await Promise.all(
     filters.map(async (filter) => {
-      if (!filter.name) return filter;
       filter.name = await Promise.all(
         filter.name.map(async (item) => {
           const { rows } = await pool.query(
@@ -100,7 +99,7 @@ async function insertProject(
   );
   // filters = [{type, name: [{name, id}, ...]}, ...]
   for (const filter of filters) {
-    if (filter.name) {
+    if (filter.name.length > 0) {
       for (const item of filter.name) {
         if (!item.id) {
           const { rows } = await pool.query(
@@ -145,7 +144,7 @@ async function getProject(projectId) {
   return result;
 }
 
-// getProject(35).then((res) => console.log(res));
+// getProject(15).then((res) => console.log(res));
 
 module.exports = {
   getAllFilters,

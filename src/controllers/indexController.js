@@ -44,8 +44,8 @@ const projectFormPost = [
       language,
       tool,
     } = req.body;
-    [category, language, tool] = [category, language, tool].map(
-      (csv) => csv?.split(",").map((string) => string.trim()) || null
+    [category, language, tool] = [category, language, tool].map((csv) =>
+      csv.split(",").map((string) => string.trim())
     );
     const projectId = await insertProject(
       name,

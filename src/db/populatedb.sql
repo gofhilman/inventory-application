@@ -48,7 +48,7 @@ VALUES
     'Shopping List', 
     'A shopping list web where ones can add and remove items.',
     E'Add items\nRemove items',
-    NULL, 
+    '', 
     'https://github.com/gofhilman/shopping-list', 
     'https://gofhilman.github.io/shopping-list/', 
     'https://i.ibb.co.com/LXN9L7Z6/01.png'
@@ -57,7 +57,7 @@ VALUES
     'Odin Recipes', 
     'A simple food recipe website using HTML and CSS only. This is my first web development project.',
     E'Index page containing food recipe list\nRecipe pages in separated HTML',
-    NULL,
+    '',
     'https://github.com/gofhilman/odin-recipes',
     'https://gofhilman.github.io/odin-recipes/',
     'https://i.ibb.co.com/P0fRjXs/02.png'
@@ -66,7 +66,7 @@ VALUES
     'Odin Landing Page',
     'My landing page using HTML and CSS only.',
     'CSS styling with flexbox',
-    NULL,
+    '',
     'https://github.com/gofhilman/odin-landing-page',
     'https://gofhilman.github.io/odin-landing-page/',
     'https://i.ibb.co.com/7xVFCD5y/03.png'
@@ -75,7 +75,7 @@ VALUES
     'Rock-Paper-Scissors Game',
     'A web-based rock-paper-scissors game. It features computer opponent using random selection in 5-round match.',
     E'Responsive design and interactive UI\nScore tracking for both player and computer\nRandomized computer moves for fair gameplay',
-    NULL,
+    '',
     'https://github.com/gofhilman/rock-paper-scissors',
     'https://gofhilman.github.io/rock-paper-scissors/',
     'https://i.ibb.co.com/N2sJL8YB/04.png'
@@ -88,7 +88,7 @@ VALUES
     || E'\nMulti-color drawing: Choose from a variety of colors to draw.'
     || E'\nIncreased opacity: Stacking strokes increases the opacity of the color.'
     || E'\nRepeatable drawing: Easily reset and redraw on the canvas.',
-    NULL,
+    '',
     'https://github.com/gofhilman/etch-a-sketch',
     'https://gofhilman.github.io/etch-a-sketch/',
     'https://i.ibb.co.com/qYH0Gg2G/05.png'
@@ -100,7 +100,7 @@ VALUES
     || E'\nSupport for decimal numbers'
     || E'\nBackspace functionality to correct input errors'
     || E'\nPlus-minus toggle for changing the sign of a number',
-    NULL,
+    '',
     'https://github.com/gofhilman/calculator',
     'https://gofhilman.github.io/calculator/',
     'https://i.ibb.co.com/7tP6wx64/06.png'
@@ -109,7 +109,7 @@ VALUES
     'Planet Table',
     'This provides a solution for a challenge by MDN to structure a planet data table.',
     'A table with multiple headings and subheadings',
-    NULL,
+    '',
     'https://github.com/gofhilman/planet-table',
     'https://gofhilman.github.io/planet-table/',
     'https://i.ibb.co.com/DfrWb0Xr/07.png'
@@ -118,7 +118,7 @@ VALUES
     'High School Python',
     'An interactive teaching material for an introduction to data analysis with Python',
     E'A teaching material with concepts and problems+solutions\nInteractive material with python notebook',
-    NULL,
+    '',
     'https://github.com/gofhilman/high-school-python',
     'https://gofhilman.github.io/high-school-python/',
     'https://i.ibb.co.com/ymp2KV5s/08.png'
@@ -127,7 +127,7 @@ VALUES
     'Sign Up Form',
     'Sign up form page with HTML form validation about house music website.',
     E'Responsive and modern design\nHTML form validation on the client side',
-    NULL,
+    '',
     'https://github.com/gofhilman/sign-up-form',
     'https://gofhilman.github.io/sign-up-form/',
     'https://i.ibb.co.com/F47jLbdm/09.png'
@@ -136,7 +136,7 @@ VALUES
     'Admin Dashboard',
     'A dashboard page with a visually appealing and functional interface for administrators using HTML and CSS only.',
     'Incorporate flexbox and grid design for modern looks',
-    NULL,
+    '',
     'https://github.com/gofhilman/admin-dashboard',
     'https://gofhilman.github.io/admin-dashboard/',
     'https://i.ibb.co.com/5XK57syL/10.png'
@@ -151,7 +151,7 @@ VALUES
     || E'\n<strong>Read Status</strong>: A checkbox allows users to mark whether a book has been read.'
     || E'\n<strong>Remove Books</strong>: Users can remove books from the collection using a "remove" button.'
     || E'\n<strong>Form Validation</strong>: Ensures that all required fields are filled before adding a book.',
-    NULL,
+    '',
     'https://github.com/gofhilman/odin-library',
     'https://gofhilman.github.io/odin-library/',
     'https://i.ibb.co.com/Gvq1rYWs/11.png'
@@ -166,7 +166,7 @@ VALUES
     || E'\n<strong>Win and Draw Detection</strong>: The game detects and announces the winner or if the game ends in a draw.'
     || E'\n<strong>Interactive UI</strong>: Players can click on the grid to make their moves, and the game updates in real-time.'
     || E'\n<strong>Reset Functionality</strong>: Players can reset the game and start a new round easily.',
-    NULL,
+    '',
     'https://github.com/gofhilman/tic-tac-toe',
     'https://gofhilman.github.io/tic-tac-toe/',
     'https://i.ibb.co.com/C5YpbTp6/12.png'
@@ -179,7 +179,7 @@ VALUES
     || E'\n<strong>Navigation Dots</strong>: Displays dots for each slide, allowing users to jump to specific slides.'
     || E'\n<strong>Auto-Cycling</strong>: Automatically cycles through slides at a configurable interval.'
     || E'\n<strong>Customizable</strong>: Easily configurable styles and behaviors.',
-    NULL,
+    '',
     'https://github.com/gofhilman/image-carousel',
     'https://www.npmjs.com/package/@gofhilman/image-carousel',
     'https://i.ibb.co.com/6GXkx7q/13.png'
@@ -191,10 +191,10 @@ VALUES
     || E'\n<code>fibsRec(seqNum)</code>: Generates a Fibonacci sequence recursively up to the given number of terms.'
     || E'\n<code>mergeSort(array)</code>: Implements the merge sort algorithm to sort an array of numbers in ascending order.'
     || E'\n<code>merge(sortedLeft, sortedRight)</code>: Merges two sorted arrays into a single sorted array.',
-    NULL,
+    '',
     'https://github.com/gofhilman/recursion',
-    NULL,
-    NULL
+    '',
+    ''
   ),
   (
     'Linked List',
@@ -209,12 +209,12 @@ VALUES
     || E'\n<code>at(index)</code>: Returns the node at the specified index.'
     || E'\n<code>pop()</code>: Removes the last node from the list.'
     || E'\n<code>contains(value)</code>: Checks if a node with the specified value exists in the list.'
-    || E'\n<code>find(value)</code>: Returns the index of the node with the specified value, or <code>null</code> if not found.'
+    || E'\n<code>find(value)</code>: Returns the index of the node with the specified value, or <code>''</code> if not found.'
     || E'\n<code>toString()</code>: Returns a string representation of the linked list.',
-    NULL,
+    '',
     'https://github.com/gofhilman/linked-lists',
-    NULL,
-    NULL
+    '',
+    ''
   ),
   (
     'Hashmap',
@@ -229,10 +229,10 @@ VALUES
     || E'\n<strong>Retrieve All Keys, Values, or Entries</strong>: Get all keys, values, or key-value pairs as arrays.'
     || E'\n<strong>Clear the HashMap</strong>: Reset the hashmap to its initial state.'
     || E'\n<strong>Customizable Capacity</strong>: Starts with an initial capacity of 16 and grows dynamically.',
-    NULL,
+    '',
     'https://github.com/gofhilman/hashmap',
-    NULL,
-    NULL
+    '',
+    ''
   ),
   (
     'Binary Search Trees',
@@ -244,10 +244,10 @@ VALUES
     || E'\n<strong>Tree Properties</strong>: Check if the tree is balanced and calculate the height and depth of nodes.'
     || E'\n<strong>Rebalancing</strong>: Automatically rebalances the tree when it becomes unbalanced.'
     || E'\n<strong>Visualization</strong>: Pretty-print the tree structure for better understanding.',
-    NULL,
+    '',
     'https://github.com/gofhilman/binary-search-trees',
-    NULL,
-    NULL
+    '',
+    ''
   ),
   (
     'Knights Travails',
@@ -257,10 +257,10 @@ VALUES
     || E'\nDisplays the sequence of moves from the starting position to the target position.'
     || E'\nImplements a breadth-first search (BFS) algorithm for optimal pathfinding.'
     || E'\nEnsures all moves are within the bounds of the chessboard.',
-    NULL,
+    '',
     'https://github.com/gofhilman/knights-travails',
-    NULL,
-    NULL
+    '',
+    ''
   ),
   (
     'JavaScript Form Validation',
@@ -273,7 +273,7 @@ VALUES
     || E'\n<strong>Password Confirmation</strong>: Verifies that the password confirmation matches the original password.'
     || E'\n<strong>Real-Time Feedback</strong>: Provides immediate feedback on input validity.'
     || E'\n<strong>Custom Error Messages</strong>: Displays user-friendly error messages for invalid inputs.',
-    NULL,
+    '',
     'https://github.com/gofhilman/js-form-validation',
     'https://gofhilman.github.io/js-form-validation/',
     'https://i.ibb.co.com/8n1n33V8/14.png'
@@ -290,8 +290,8 @@ VALUES
     '<strong>jest</strong>: A JavaScript testing framework used for writing and running unit tests with ease and flair.'  
     || E'\n<strong>babel</strong>: A JavaScript compiler that transforms modern code into backwards-compatible versions for diverse environments.',
     'https://github.com/gofhilman/testing-practice',
-    NULL,
-    NULL
+    '',
+    ''
   ),
   (
     'Webpack Front End Template',
@@ -316,8 +316,8 @@ VALUES
     || E'\n<strong>Jest</strong>: For unit testing.'  
     || E'\n<strong>Imagemin</strong>: For optimizing images.',
     'https://github.com/gofhilman/webpack-frontend-template',
-    NULL,
-    NULL
+    '',
+    ''
   ),
   (
     'Restaurant Page',
@@ -404,8 +404,8 @@ VALUES
     || E'\n<strong>Export Options</strong>: Outputs processed data and visualizations in multiple formats.',
     E'Signal Processing Toolbox\nCurve Fitting Toolbox',
     'https://github.com/gofhilman/fmr-analysis',
-    NULL,
-    NULL
+    '',
+    ''
   ),
   (
     'Multiple Sphere T-Matrix',
@@ -418,10 +418,10 @@ VALUES
     || E'\nHigh accuracy using the T-Matrix method.'  
     || E'\nCustomizable parameters for advanced simulations.'  
     || E'\nDetailed output for analysis and visualization.',
-    NULL,
+    '',
     'https://github.com/gofhilman/mstm',
-    NULL,
-    NULL
+    '',
+    ''
   ),
   (
     'Home Page',
@@ -456,8 +456,8 @@ VALUES
     || E'\n<strong>Linting/Formatting</strong>: ESLint, Prettier'  
     || E'\n<strong>Other Tools</strong>: clsx, lucide-react, modern-normalize, svgo',
     'https://github.com/gofhilman/vite-react-template',
-    NULL,
-    NULL
+    '',
+    ''
   ),
   (
     'CV Application',
@@ -575,10 +575,10 @@ VALUES
     || E'\nSimulasi gerak parabola dengan gesekan udara.'  
     || E'\nSimulasi gerak parabola yang dipengaruhi oleh gerakan angin.'  
     || E'\nSimulasi gerak parabola dengan kombinasi gesekan udara dan gerakan angin.',
-    NULL,
+    '',
     'https://github.com/gofhilman/parabolic-motion',
-    NULL,
-    NULL
+    '',
+    ''
   ),
   (
     'Regresi',
@@ -592,8 +592,8 @@ VALUES
     || E'\n<strong>Matplotlib</strong>: Visualization library for creating static, animated, and interactive plots'  
     || E'\n<strong>Scikit-learn</strong>: Machine learning library for classification, regression, and clustering',
     'https://github.com/gofhilman/regression',
-    NULL,
-    NULL
+    '',
+    ''
   ),
   (
     'Klasifikasi dengan EMNIST dan Gambar Pindai',
@@ -610,8 +610,8 @@ VALUES
     || E'\n<strong>PIL (Pillow)</strong>: Image processing library for opening, manipulating, and saving images'  
     || E'\n<strong>mlxtend</strong>: Extension library for machine learning and data science utilities',
     'https://github.com/gofhilman/classification',
-    NULL,
-    NULL
+    '',
+    ''
   ),
   (
     'Prediksi Seedling',
@@ -627,8 +627,8 @@ VALUES
     || E'\n<strong>Matplotlib</strong>: Visualization library for creating static, animated, and interactive plots'  
     || E'\n<strong>Seaborn</strong>: High-level interface for statistical data visualization built on Matplotlib',
     'https://github.com/gofhilman/seedling-prediction',
-    NULL,
-    NULL
+    '',
+    ''
   ),
   (
     'Klasifikasi CNN',
@@ -644,8 +644,8 @@ VALUES
     || E'\n<strong>Matplotlib</strong>: Visualization library for creating static, animated, and interactive plots'  
     || E'\n<strong>OpenCV</strong>: Open-source library for image processing and computer vision tasks',
     'https://github.com/gofhilman/cnn-classification',
-    NULL,
-    NULL
+    '',
+    ''
   );
   
 INSERT INTO category (name)

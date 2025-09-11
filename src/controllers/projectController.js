@@ -39,8 +39,8 @@ const projectEditPost = [
       language,
       tool,
     } = req.body;
-    [category, language, tool] = [category, language, tool].map(
-      (csv) => csv?.split(",").map((string) => string.trim()) || null
+    [category, language, tool] = [category, language, tool].map((csv) =>
+      csv.split(",").map((string) => string.trim())
     );
     // to do: consider '' instead of NULL, change insert to update
     // const projectId = await insertProject(
