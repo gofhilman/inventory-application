@@ -4,7 +4,7 @@ const validateMessage = require("../lib/form-validation");
 
 async function projectGet(req, res) {
   const { projectId } = req.params;
-  const project = await getProject(projectId);
+  const project = await getProject(+projectId);
   res.render("main-layout", {
     projectId,
     project,
@@ -15,7 +15,7 @@ async function projectGet(req, res) {
 
 async function projectEditGet(req, res) {
   const { projectId } = req.params;
-  const project = await getProject(projectId);
+  const project = await getProject(+projectId);
   [project.category, project.language, project.tool] = [
     project.category,
     project.language,
@@ -59,7 +59,7 @@ const projectEditPost = [
       csv.split(",").map((string) => string.trim())
     );
     await updateProject(
-      projectId,
+      +projectId,
       name,
       description,
       features,
@@ -77,8 +77,8 @@ const projectEditPost = [
 
 async function projectDeletePost(req, res) {
   const { projectId } = req.params;
-  await deleteProject(projectId);
-  res.redirect("/?category=featured&page=1");
+  await deleteProject(+projectId);
+  res.redirect("/?category=1&page=1");
 }
 
 module.exports = {

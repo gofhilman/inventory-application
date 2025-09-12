@@ -1,0 +1,8 @@
+<% if (locals.errors) {%>
+<h3>Failed to submit the form</h3>
+<ul>
+  <% errors.forEach(function(error) { %>
+  <li><%= error.msg %></li>
+  <% }); %>
+</ul>
+<% } %>

@@ -39,3 +39,7 @@ img {
 }
 
 /* custom */
+
+pre {
+  font-family: inherit;
+}

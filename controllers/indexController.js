@@ -8,15 +8,15 @@ const validateMessage = require("../lib/form-validation");
 
 async function filteredProjectGet(req, res) {
   if (Object.keys(req.query).length === 0) {
-    return res.redirect("/?category=featured&page=1");
+    return res.redirect("/?category=1&page=1");
   }
   const { category, language, tool, page } = req.query;
   const filters = await getAllFilters();
   const filteredProjects = await getFilteredProjects(
-    category,
-    language,
-    tool,
-    page
+    +category,
+    +language,
+    +tool,
+    +page
   );
   res.render("main-layout", {
     filters,
