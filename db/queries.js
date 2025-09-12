@@ -3,7 +3,7 @@ const pool = require("./pool");
 
 const ITEMS_PER_PAGE = 10;
 
-async function getQueryNameList(sql) {
+async function getQueryList(sql) {
   const { rows } = await pool.query(sql);
   return rows;
 }
@@ -51,9 +51,9 @@ async function insertFilters(projectId, category, language, tool) {
 
 async function getAllFilters() {
   const [categories, languages, tools] = await Promise.all([
-    getQueryNameList(`SELECT * FROM category;`),
-    getQueryNameList(`SELECT * FROM language;`),
-    getQueryNameList(`SELECT * FROM tool;`),
+    getQueryList(`SELECT * FROM category;`),
+    getQueryList(`SELECT * FROM language;`),
+    getQueryList(`SELECT * FROM tool;`),
   ]);
   return { categories, languages, tools };
 }

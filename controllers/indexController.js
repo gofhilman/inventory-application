@@ -10,17 +10,19 @@ async function filteredProjectGet(req, res) {
   if (Object.keys(req.query).length === 0) {
     return res.redirect("/?category=1&page=1");
   }
-  const { category, language, tool, page } = req.query;
+  let { category, language, tool, page } = req.query;
+  [category, language, tool, page] = [+category, +language, +tool, +page];
   const filters = await getAllFilters();
   const filteredProjects = await getFilteredProjects(
-    +category,
-    +language,
-    +tool,
-    +page
+    category,
+    language,
+    tool,
+    page
   );
   res.render("main-layout", {
     filters,
     filteredProjects,
+    indexQuery: {category, language, tool, page},
     page: "index",
     title: "Home",
   });

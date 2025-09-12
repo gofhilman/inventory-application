@@ -1,0 +1,39 @@
+<main>
+  <div>
+    <p>Filter by</p>
+    <form action="/">
+      <div>
+        <label for="category">Category</label>
+        <select name="category" id="category">
+          <option value="">all categories</option>
+          <% filters.categories.forEach((item) => { %>
+          <option value=<%= item.id %> <%= item.id === indexQuery.category ? "selected" : "" %>><%= item.name %></option>
+          <% }); %>
+        </select>
+      </div>
+      <div>
+        <label for="language">Language</label>
+        <select name="language" id="language">
+          <option value="">all languages</option>
+          <% filters.languages.forEach((item) => { %>
+          <option value=<%= item.id %> <%= item.id === indexQuery.language ? "selected" : "" %>><%= item.name %></option>
+          <% }); %>
+        </select>
+      </div>
+      <div>
+        <label for="tool">Tool</label>
+        <select name="tool" id="tool">
+          <option value="">all tools</option>
+          <% filters.tools.forEach((item) => { %>
+          <option value=<%= item.id %> <%= item.id === indexQuery.tool ? "selected" : "" %>><%= item.name %></option>
+          <% }); %>
+        </select>
+      </div>
+      <input type="hidden" name="page" value="1">
+      <button>Apply</button>
+    </form>
+  </div>
+  <div>
+    <!-- to do -->
+  </div>
+</main>
