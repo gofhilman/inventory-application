@@ -34,6 +34,30 @@
     </form>
   </div>
   <div>
-    <!-- to do -->
+    <% const categoryName = indexQuery.category ? 
+      filters.categories.find(item => item.id === indexQuery.category).name : "All projects"; %>
+    <h2><%= categoryName[0].toUpperCase() + categoryName.slice(1) %></h2>
+    <p><%= filteredProjectNumber %> items found</p>
+    <div>
+      <% compartedProjects.forEach((item) => { %>
+      <article>
+        <a href=<%= `/project/${item.project_id}` %>><img src=<%= item.image %> alt="Project image"></a>
+        <div>
+          <a href=<%= `/project/${item.project_id}` %>>
+            <h3><%= item.name %></h3>
+            <p>Category: <%= item.category.join(", ") %></p>
+            <p><%= item.description %></p>
+          </a>
+          <p><a href=<%= item.source %>><%= item.source %></a></p>
+        </div>
+      </article>
+      <% }); %>
+    </div>
+    <div>
+      <!-- to do -->
+      <a href=""><img src="" alt=""></a>
+      <p></p>
+      <a href=""><img src="" alt=""></a>
+    </div>
   </div>
 </main>

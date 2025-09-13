@@ -8,6 +8,43 @@ async function getQueryList(sql) {
   return rows;
 }
 
+async function getFilteredProjects(category, language, tool) {
+  const filters = [
+    { id: category, name: "category" },
+    { id: language, name: "language" },
+    { id: tool, name: "tool" },
+  ];
+  const modFilters = filters.filter((item) => item.id);
+  const sqlParams = modFilters.map((item) => item.id);
+  const createFilter = (index, filterName) =>
+    `project.id IN (SELECT project_id FROM project_${filterName} WHERE ${filterName}_id = $${index})`;
+  const baseSql = `
+    SELECT project.id AS project_id, project.name, description, source, image
+    FROM project
+  `;
+  const filterSql = modFilters
+    .map((item, index) => createFilter(index + 1, item.name))
+    .join(` AND `);
+  const closingSql = `
+    ORDER BY project_id DESC;
+  `;
+  const sql = baseSql + (filterSql ? `WHERE ` + filterSql : ``) + closingSql;
+  const { rows } = await pool.query(sql, sqlParams);
+  return await Promise.all(
+    rows.map(async (row) => {
+      const { rows: categoryRows } = await pool.query(
+        `SELECT name FROM category 
+        JOIN project_category ON project_category.category_id = category.id
+        WHERE project_id = $1
+        ORDER BY id;`,
+        [row.project_id]
+      );
+      row.category = categoryRows.map((item) => item.name);
+      return row;
+    })
+  );
+}
+
 async function insertFilters(projectId, category, language, tool) {
   let filters = [
     { type: "category", name: category },
@@ -58,42 +95,15 @@ async function getAllFilters() {
   return { categories, languages, tools };
 }
 
-async function getFilteredProjects(category, language, tool, page) {
-  const filters = [
-    { id: category, name: "category" },
-    { id: language, name: "language" },
-    { id: tool, name: "tool" },
-  ];
-  const modFilters = filters.filter((item) => item.id);
-  const sqlParams = modFilters.map((item) => item.id);
-  const createFilter = (index, filterName) =>
-    `project.id IN (SELECT project_id FROM project_${filterName} WHERE ${filterName}_id = $${index})`;
-  const baseSql = `
-    SELECT project.id AS project_id, project.name, description, source, image
-    FROM project
-  `;
-  const filterSql = modFilters
-    .map((item, index) => createFilter(index + 1, item.name))
-    .join(` AND `);
-  const closingSql = `
-    ORDER BY project_id DESC;
-  `;
-  const sql = baseSql + (filterSql ? `WHERE ` + filterSql : ``) + closingSql;
-  const { rows } = await pool.query(sql, sqlParams);
-  const result = await Promise.all(
-    rows.map(async (row) => {
-      const { rows: categoryRows } = await pool.query(
-        `SELECT name FROM category 
-        JOIN project_category ON project_category.category_id = category.id
-        WHERE project_id = $1
-        ORDER BY id;`,
-        [row.project_id]
-      );
-      row.category = categoryRows.map((item) => item.name);
-      return row;
-    })
+async function getFilteredProjectNumber(category, language, tool) {
+  return (await getFilteredProjects(category, language, tool)).length;
+}
+
+async function getCompartedProjects(category, language, tool, page) {
+  return (await getFilteredProjects(category, language, tool)).slice(
+    (page - 1) * ITEMS_PER_PAGE,
+    page * ITEMS_PER_PAGE
   );
-  return result.slice((page - 1) * ITEMS_PER_PAGE, page * ITEMS_PER_PAGE);
 }
 
 // getFilteredProjects(1, undefined, undefined, 1).then((res) =>
@@ -183,7 +193,8 @@ async function deleteProject(projectId) {
 
 module.exports = {
   getAllFilters,
-  getFilteredProjects,
+  getFilteredProjectNumber,
+  getCompartedProjects,
   insertProject,
   getProject,
   updateProject,

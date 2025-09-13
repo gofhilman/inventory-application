@@ -1,7 +1,8 @@
 const { validationResult } = require("express-validator");
 const {
   getAllFilters,
-  getFilteredProjects,
+  getFilteredProjectNumber,
+  getCompartedProjects,
   insertProject,
 } = require("../db/queries");
 const validateMessage = require("../lib/form-validation");
@@ -13,7 +14,12 @@ async function filteredProjectGet(req, res) {
   let { category, language, tool, page } = req.query;
   [category, language, tool, page] = [+category, +language, +tool, +page];
   const filters = await getAllFilters();
-  const filteredProjects = await getFilteredProjects(
+  const filteredProjectNumber = await getFilteredProjectNumber(
+    category,
+    language,
+    tool
+  );
+  const compartedProjects = await getCompartedProjects(
     category,
     language,
     tool,
@@ -21,8 +27,9 @@ async function filteredProjectGet(req, res) {
   );
   res.render("main-layout", {
     filters,
-    filteredProjects,
-    indexQuery: {category, language, tool, page},
+    filteredProjectNumber,
+    compartedProjects,
+    indexQuery: { category, language, tool, page },
     page: "index",
     title: "Home",
   });
