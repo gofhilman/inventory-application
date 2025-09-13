@@ -54,10 +54,18 @@
       <% }); %>
     </div>
     <div>
-      <!-- to do -->
-      <a href=""><img src="" alt=""></a>
-      <p></p>
-      <a href=""><img src="" alt=""></a>
+      <% Object.keys(indexQuery).forEach(key => {
+        if(!indexQuery[key]) indexQuery[key] = "";
+      }); %>
+      <a href=<%= `/?category=${indexQuery.category}&language=${indexQuery.language}&tool=${indexQuery.tool}&page=${indexQuery.page - 1}` %>
+        class=<%= indexQuery.page === 1 ? "disable" : "" %>>
+        <img src="/images/chevron-left.svg" alt="">
+      </a>
+      <p><%= indexQuery.page %></p>
+      <a href=<%= `/?category=${indexQuery.category}&language=${indexQuery.language}&tool=${indexQuery.tool}&page=${indexQuery.page + 1}` %>
+        class=<%= indexQuery.page === Math.floor((filteredProjectNumber - 1) / 10) + 1 ? "disable" : "" %>>
+        <img src="/images/chevron-right.svg" alt="">
+      </a>
     </div>
   </div>
 </main>

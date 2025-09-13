@@ -51,7 +51,7 @@ VALUES
     '', 
     'https://github.com/gofhilman/shopping-list', 
     'https://gofhilman.github.io/shopping-list/', 
-    'https://i.ibb.co.com/LXN9L7Z6/01.png'
+    'https://res.cloudinary.com/dwyzndpyq/image/upload/v1757752806/01_xij1id.png'
   ),
   (
     'Odin Recipes', 
@@ -60,7 +60,7 @@ VALUES
     '',
     'https://github.com/gofhilman/odin-recipes',
     'https://gofhilman.github.io/odin-recipes/',
-    'https://i.ibb.co.com/P0fRjXs/02.png'
+    'https://res.cloudinary.com/dwyzndpyq/image/upload/v1757752807/02_t1u0ga.png'
   ),
   (
     'Odin Landing Page',
@@ -69,7 +69,7 @@ VALUES
     '',
     'https://github.com/gofhilman/odin-landing-page',
     'https://gofhilman.github.io/odin-landing-page/',
-    'https://i.ibb.co.com/7xVFCD5y/03.png'
+    'https://res.cloudinary.com/dwyzndpyq/image/upload/v1757752808/03_xmlaxd.png'
   ),
   (
     'Rock-Paper-Scissors Game',
@@ -78,7 +78,7 @@ VALUES
     '',
     'https://github.com/gofhilman/rock-paper-scissors',
     'https://gofhilman.github.io/rock-paper-scissors/',
-    'https://i.ibb.co.com/N2sJL8YB/04.png'
+    'https://res.cloudinary.com/dwyzndpyq/image/upload/v1757752807/04_qboqu7.png'
   ),
   (
     'Etch-A-Sketch',
@@ -91,7 +91,7 @@ VALUES
     '',
     'https://github.com/gofhilman/etch-a-sketch',
     'https://gofhilman.github.io/etch-a-sketch/',
-    'https://i.ibb.co.com/qYH0Gg2G/05.png'
+    'https://res.cloudinary.com/dwyzndpyq/image/upload/v1757752807/05_ovasax.png'
   ),
   (
     'Calculator',
@@ -103,7 +103,7 @@ VALUES
     '',
     'https://github.com/gofhilman/calculator',
     'https://gofhilman.github.io/calculator/',
-    'https://i.ibb.co.com/7tP6wx64/06.png'
+    'https://res.cloudinary.com/dwyzndpyq/image/upload/v1757752810/06_elsvpu.png'
   ),
   (
     'Planet Table',
@@ -112,7 +112,7 @@ VALUES
     '',
     'https://github.com/gofhilman/planet-table',
     'https://gofhilman.github.io/planet-table/',
-    'https://i.ibb.co.com/DfrWb0Xr/07.png'
+    'https://res.cloudinary.com/dwyzndpyq/image/upload/v1757752811/07_hazeqk.png'
   ),
   (
     'High School Python',
@@ -121,7 +121,7 @@ VALUES
     '',
     'https://github.com/gofhilman/high-school-python',
     'https://gofhilman.github.io/high-school-python/',
-    'https://i.ibb.co.com/ymp2KV5s/08.png'
+    'https://res.cloudinary.com/dwyzndpyq/image/upload/v1757752812/08_kvv4q7.png'
   ),
   (
     'Sign Up Form',
@@ -130,7 +130,7 @@ VALUES
     '',
     'https://github.com/gofhilman/sign-up-form',
     'https://gofhilman.github.io/sign-up-form/',
-    'https://i.ibb.co.com/F47jLbdm/09.png'
+    'https://res.cloudinary.com/dwyzndpyq/image/upload/v1757752813/09_dygco8.png'
   ),
   (
     'Admin Dashboard',
@@ -139,7 +139,7 @@ VALUES
     '',
     'https://github.com/gofhilman/admin-dashboard',
     'https://gofhilman.github.io/admin-dashboard/',
-    'https://i.ibb.co.com/5XK57syL/10.png'
+    'https://res.cloudinary.com/dwyzndpyq/image/upload/v1757752814/10_kc3vyq.png'
   ),
   (
     'Odin Library',
@@ -154,7 +154,7 @@ VALUES
     '',
     'https://github.com/gofhilman/odin-library',
     'https://gofhilman.github.io/odin-library/',
-    'https://i.ibb.co.com/Gvq1rYWs/11.png'
+    'https://res.cloudinary.com/dwyzndpyq/image/upload/v1757752815/11_jsh5lj.png'
   ),
   (
     'Tic-Tac-Toe',
@@ -169,7 +169,7 @@ VALUES
     '',
     'https://github.com/gofhilman/tic-tac-toe',
     'https://gofhilman.github.io/tic-tac-toe/',
-    'https://i.ibb.co.com/C5YpbTp6/12.png'
+    'https://res.cloudinary.com/dwyzndpyq/image/upload/v1757752816/12_ynz8xr.png'
   ),
   (
     'Image Carousel',
@@ -182,7 +182,7 @@ VALUES
     '',
     'https://github.com/gofhilman/image-carousel',
     'https://www.npmjs.com/package/@gofhilman/image-carousel',
-    'https://i.ibb.co.com/6GXkx7q/13.png'
+    'https://res.cloudinary.com/dwyzndpyq/image/upload/v1757752817/13_julpi5.png'
   ),
   (
     'Recursion',
@@ -276,7 +276,7 @@ VALUES
     '',
     'https://github.com/gofhilman/js-form-validation',
     'https://gofhilman.github.io/js-form-validation/',
-    'https://i.ibb.co.com/8n1n33V8/14.png'
+    'https://res.cloudinary.com/dwyzndpyq/image/upload/v1757752818/14_ljmu1i.png'
   ),
   (
     'Testing Practice',
@@ -331,7 +331,7 @@ VALUES
     || E'\n<strong>Image Optimization</strong>: Utilized plugins like imagemin for optimized image loading.',
     'https://github.com/gofhilman/restaurant-page',
     'https://gofhilman.github.io/restaurant-page/',
-    'https://i.ibb.co.com/wZz7s2mb/15.png'
+    'https://res.cloudinary.com/dwyzndpyq/image/upload/v1757752819/15_ozz7g7.png'
   ),
   (
     'To Do List',
@@ -351,7 +351,7 @@ VALUES
     || E'\n<strong>Lodash</strong>: Utility library for JavaScript.',
     'https://github.com/gofhilman/todo-list',
     'https://gofhilman.github.io/todo-list/',
-    'https://i.ibb.co.com/xtpvLBBk/16.png'
+    'https://res.cloudinary.com/dwyzndpyq/image/upload/v1757752820/16_l7rfmz.png'
   ),
   (
     'Weather App',
@@ -370,7 +370,7 @@ VALUES
     || E'\n<strong>API Ninjas World Time API</strong>: For fetching real-time location-based time.',
     'https://github.com/gofhilman/weather-app',
     'https://gofhilman.github.io/weather-app/',
-    'https://i.ibb.co.com/0jQQVWyp/17.png'
+    'https://res.cloudinary.com/dwyzndpyq/image/upload/v1757752821/17_en4eg4.png'
   ),
   (
     'Battleship Game',
@@ -388,7 +388,7 @@ VALUES
     || E'\n<strong>State Management</strong>: PubSub-JS',
     'https://github.com/gofhilman/battleship',
     'https://gofhilman.github.io/battleship/',
-    'https://i.ibb.co.com/JWkm5BQk/18.png'
+    'https://res.cloudinary.com/dwyzndpyq/image/upload/v1757752823/18_n0eokh.png'
   ),
   (
     'FMR Analysis',
@@ -437,7 +437,7 @@ VALUES
     || E'\n<strong>Optimization</strong>: Imagemin',
     'https://github.com/gofhilman/homepage',
     'https://gofhilman.github.io/homepage/',
-    'https://i.ibb.co.com/nNHdHzBV/19.png'
+    'https://res.cloudinary.com/dwyzndpyq/image/upload/v1757752823/19_hkijbs.png'
   ),
   (
     'Vite + React Template',
@@ -474,7 +474,7 @@ VALUES
     || E'\n<strong>Development Tools</strong>: Prettier, ESLint',
     'https://github.com/gofhilman/cv-application',
     'https://cv-application-epd.pages.dev/',
-    'https://i.ibb.co.com/BDXBR83/20.png'
+    'https://res.cloudinary.com/dwyzndpyq/image/upload/v1757752824/20_rrpqjq.png'
   ),
   (
     'Pokémon Memory Card Game',
@@ -491,7 +491,7 @@ VALUES
     || E'\n<strong>Utilities</strong>: Prettier, ESLint',
     'https://github.com/gofhilman/memory-card',
     'https://memory-card-4lo.pages.dev/',
-    'https://i.ibb.co.com/rKPvrzVw/21.png'
+    'https://res.cloudinary.com/dwyzndpyq/image/upload/v1757752824/21_uhgd8b.png'
   ),
   (
     'ShopShop',
@@ -515,7 +515,7 @@ VALUES
     || E'\n<strong>ESLint + Prettier</strong>: Code linting and formatting',
     'https://github.com/gofhilman/shopping-cart',
     'https://shopping-cart-b3g.pages.dev/',
-    'https://i.ibb.co.com/VW4x2Qjw/22.png'
+    'https://res.cloudinary.com/dwyzndpyq/image/upload/v1757752826/22_mx9z69.png'
   ),
   (
     'Next.js Dashboard App',
@@ -536,7 +536,7 @@ VALUES
     || E'\n<strong>Other Tools</strong>: Vercel for deployment',
     'https://github.com/gofhilman/nextjs-dashboard-app',
     'https://nextjs-dashboard-app-kappa-beryl.vercel.app',
-    'https://i.ibb.co.com/HLsTGbbW/23.png'
+    'https://res.cloudinary.com/dwyzndpyq/image/upload/v1757752827/23_jhcfqr.png'
   ),
   (
     'Basic Informational Site',
@@ -549,7 +549,7 @@ VALUES
     || E'\n<strong>File System</strong>: Node.js fs module for reading HTML files',
     'https://github.com/gofhilman/basic-informational-site',
     'https://basic-informational-site-1r1b.onrender.com/',
-    'https://i.ibb.co.com/4v9zPH1/24.png'
+    'https://res.cloudinary.com/dwyzndpyq/image/upload/v1757752827/24_p3tdhq.png'
   ),
   (
     'Mini Message Board',
@@ -564,7 +564,7 @@ VALUES
     || E'\n<strong>Utilities</strong>: date-fns for formatting dates, express-validator for input validation',
     'https://github.com/gofhilman/mini-message-board',
     'https://mini-message-board-9bsr.onrender.com/',
-    'https://i.ibb.co.com/60kFPd90/25.png'
+    'https://res.cloudinary.com/dwyzndpyq/image/upload/v1757752828/25_ely4ns.png'
   ),
   (
     'Gerak Parabola',
