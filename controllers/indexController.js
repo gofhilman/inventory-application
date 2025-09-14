@@ -36,7 +36,7 @@ async function filteredProjectGet(req, res) {
 }
 
 async function projectFormGet(_, res) {
-  res.render("main-layout", { page: "new-project", title: "New project" });
+  res.render("main-layout", { page: "add-project", title: "Add a project" });
 }
 
 const projectFormPost = [
@@ -45,8 +45,8 @@ const projectFormPost = [
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
       return res.status(400).render("main-layout", {
-        page: "new-project",
-        title: "New project",
+        page: "add-project",
+        title: "Add a project",
         errors: errors.array(),
       });
     }
