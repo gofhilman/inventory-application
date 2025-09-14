@@ -1,0 +1,39 @@
+<main>
+  <%- include("delete-project") %>
+  <h2><%= project.name %></h2>
+  <img src="<%= project.image %>" alt="Project image" />
+  <div>
+    <p>
+      Source code: <a href="<%= project.source %>"><%= project.source %></a>
+    </p>
+    <p>Website: <a href="<%= project.website %>"><%= project.website %></a></p>
+  </div>
+  <div>
+    <p>Category:</p>
+    <div>
+      <% project.category.forEach((item) => { %>
+      <p><%= item %></p>
+      <% }); %>
+    </div>
+  </div>
+  <div>
+    <p>Language:</p>
+    <div>
+      <% project.language.forEach((item) => { %>
+      <p><%= item %></p>
+      <% }); %>
+    </div>
+  </div>
+  <p><%= project.description %></p>
+  <section>
+    <h3>Features</h3>
+    <p><%= project.features %></p>
+  </section>
+  <section>
+    <h3>Tech stack</h3>
+    <p><%= project.stack %></p>
+  </section>
+  <div>
+    <!-- to do -->
+  </div>
+</main>

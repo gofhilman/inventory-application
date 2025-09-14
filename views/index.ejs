@@ -45,10 +45,18 @@
         <div>
           <a href=<%= `/project/${item.project_id}` %>>
             <h3><%= item.name %></h3>
+            <div>
+              <p>Category:</p>
+              <div>
+                <% item.category.forEach((element) => { %>
+                <p><%= element %></p>
+                <% }); %>
+              </div>
+            </div>
             <p>Category: <%= item.category.join(", ") %></p>
             <p><%= item.description %></p>
           </a>
-          <p><a href=<%= item.source %>><%= item.source %></a></p>
+          <p>Source code: <a href=<%= item.source %>><%= item.source %></a></p>
         </div>
       </article>
       <% }); %>
