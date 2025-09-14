@@ -1,6 +1,7 @@
 const { validationResult } = require("express-validator");
 const { getProject, updateProject, deleteProject } = require("../db/queries");
 const validateMessage = require("../lib/form-validation");
+const validateDeletionMessage = require("../lib/deletion-validation");
 
 async function projectGet(req, res) {
   const { projectId } = req.params;
@@ -56,7 +57,10 @@ const projectEditPost = [
       tool,
     } = req.body;
     [category, language, tool] = [category, language, tool].map((csv) =>
-      csv.split(",").map((string) => string.trim()).filter(Boolean)
+      csv
+        .split(",")
+        .map((string) => string.trim())
+        .filter(Boolean)
     );
     await updateProject(
       +projectId,
@@ -75,11 +79,25 @@ const projectEditPost = [
   },
 ];
 
-async function projectDeletePost(req, res) {
-  const { projectId } = req.params;
-  await deleteProject(+projectId);
-  res.redirect("/?category=1&page=1");
-}
+const projectDeletePost = [
+  validateDeletionMessage,
+  async (req, res) => {
+    const { projectId } = req.params;
+    const project = await getProject(+projectId);
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+      return res.status(400).render("main-layout", {
+        projectId,
+        project,
+        page: "project",
+        title: project.name,
+        errors: errors.array(),
+      });
+    }
+    await deleteProject(+projectId);
+    res.redirect("/?category=1&page=1");
+  },
+];
 
 module.exports = {
   projectGet,

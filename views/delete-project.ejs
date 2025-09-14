@@ -1,10 +1,12 @@
-<dialog id="delete-dialog">
+<dialog id="<%= locals.errors ? "show-dialog" : "delete-dialog" %>">
   <form action="<%= `/project/${projectId}/delete` %>" method="post">
     <h4>Confirm delete</h4>
+    <%- include("partials/errors.ejs") %>
     <label for="password">Enter the admin password to delete this project:</label>
     <input type="password" name="password" id="password" required>
     <div>
-      <!-- to do -->
+      <button formmethod="dialog" formnovalidate>Cancel</button>
+      <button>Delete</button>
     </div>
   </form>
 </dialog>
