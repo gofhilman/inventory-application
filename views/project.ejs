@@ -27,13 +27,30 @@
   <p><%= project.description %></p>
   <section>
     <h3>Features</h3>
-    <p><%= project.features %></p>
+    <ul>
+      <% project.features.split("\n").forEach((item) => { %>
+      <li><%- item %></li>
+      <% }); %>
+    </ul>
   </section>
   <section>
     <h3>Tech stack</h3>
-    <p><%= project.stack %></p>
+    <ul>
+      <% project.stack.split("\n").forEach((item) => { %>
+      <li><%- item %></li>
+      <% }); %>
+    </ul>
   </section>
   <div>
-    <!-- to do -->
+    <form action="<%= `/project/${projectId}/edit` %>">
+      <button>
+        <img src="/images/square-pen.svg" alt="" />
+        <p>edit</p>
+      </button>
+    </form>
+    <button id="delete">
+      <img src="/images/trash-2.svg" alt="" />
+      <p>delete</p>
+    </button>
   </div>
 </main>
