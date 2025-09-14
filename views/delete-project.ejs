@@ -1,3 +1,10 @@
 <dialog id="delete-dialog">
-
+  <form action="<%= `/project/${projectId}/delete` %>" method="post">
+    <h4>Confirm delete</h4>
+    <label for="password">Enter the admin password to delete this project:</label>
+    <input type="password" name="password" id="password" required>
+    <div>
+      <!-- to do -->
+    </div>
+  </form>
 </dialog>
