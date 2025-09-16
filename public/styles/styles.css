@@ -140,6 +140,48 @@ aside button:hover {
   background-color: #475569;
 }
 
+dialog {
+  border-radius: 12px;
+  background-color: #f8fafc;
+  border: 2px solid #cbd5e1;
+  width: 400px;
+}
+
+dialog form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+dialog h4 {
+  font-size: 1.5rem;
+  font-weight: 500;
+}
+
+.delete-input {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.dialog-buttons {
+  display: flex;
+  justify-content: space-between;  
+}
+
+.dialog-buttons button {
+  padding: 5px 15px;
+  font-weight: 500;
+  font-size: 1.1rem;
+  border-radius: 8px;
+  border-width: 1px;
+}
+
+.dialog-delete {
+  color: white;
+  background-color: #f53333;
+}
+
 .icon-text {
   display: flex;
   align-items: center;
@@ -337,8 +379,14 @@ aside button:hover {
   align-self: center;
   display: grid;
   align-items: center;
-  justify-items: center;
-  grid-template-columns: repeat(3, 35px);
+  justify-items: start;
+  grid-template-columns: auto 35px auto;
+  gap: 15px;
+  font-weight: 500;
+}
+
+.pagination .icon-text {
+  gap: 0;
 }
 
 .pagination > p {
@@ -346,10 +394,9 @@ aside button:hover {
   color: white;
   text-align: center;
   justify-self: stretch;
-  font-size: 1.2rem;
-  font-weight: 500;
   padding-block: 3px;
   border-radius: 8px;
+  font-size: 1.2rem;
 }
 
 .pagination img {
@@ -391,7 +438,8 @@ main.no-filter {
 }
 
 .form input,
-.form textarea {
+.form textarea,
+dialog input {
   padding: 3px 8px;
   line-height: 1.5;
 }
@@ -505,7 +553,6 @@ main.no-filter {
 .project-buttons {
   padding-top: 15px;
   display: flex;
-  gap: 30px;
   justify-content: space-between;
 }
 
@@ -514,7 +561,7 @@ main.no-filter {
   font-size: 1.3rem;
   font-weight: 500;
   color: white;
-  border: none;
+  border-width: 1px;
   border-radius: 12px;
 }
 

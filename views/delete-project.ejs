@@ -2,11 +2,13 @@
   <form action="<%= `/project/${projectId}/delete` %>" method="post">
     <h4>Confirm delete</h4>
     <%- include("partials/errors.ejs") %>
-    <label for="password">Enter the admin password to delete this project:</label>
-    <input type="password" name="password" id="password" required>
-    <div>
+    <div class="delete-input">
+      <label for="password">Enter the admin password to delete this project:</label>
+      <input type="password" name="password" id="password" required>
+    </div>
+    <div class="dialog-buttons">
       <button formmethod="dialog" formnovalidate>Cancel</button>
-      <button>Delete</button>
+      <button class="dialog-delete">Delete</button>
     </div>
   </form>
 </dialog>

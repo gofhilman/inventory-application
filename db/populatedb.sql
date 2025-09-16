@@ -495,9 +495,11 @@ VALUES
   ),
   (
     'ShopShop',
-    'A mock shopping website that allows users to browse products, add them to a cart, and simulate a shopping experience. '
+    'A mock shopping website built as a Single-Page Application (SPA) using React Router. '
+    || 'Users can browse products, add them to a cart, and simulate a shopping experience. '
     || 'The app features a responsive design and a user-friendly interface.',
-    '<strong>Product Listing</strong>: Browse a variety of products fetched from a mock API.'  
+    '<strong>Single-Page Application (SPA) architecture</strong>: Navigate seamlessly without page reloads.'
+    || E'\n<strong>Product Listing</strong>: Browse a variety of products fetched from a mock API.'  
     || E'\n<strong>Search Functionality</strong>: Fuzzy search powered by Fuse.js for quick product discovery.'  
     || E'\n<strong>Shopping Cart</strong>: Add, remove, and view items in the cart with real-time updates.'  
     || E'\n<strong>Category Filtering</strong>: Filter products by categories.'  

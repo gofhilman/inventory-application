@@ -72,12 +72,18 @@
       }); %>
       <a href=<%= `/?category=${indexQuery.category}&language=${indexQuery.language}&tool=${indexQuery.tool}&page=${indexQuery.page - 1}` %>
         class=<%= indexQuery.page === 1 ? "disable" : "" %>>
-        <img src="/images/chevron-left.svg" alt="">
+        <div class="icon-text">
+          <img src="/images/chevron-left.svg" alt="">
+          <p>Previous</p>
+        </div>
       </a>
       <p><%= indexQuery.page %></p>
       <a href=<%= `/?category=${indexQuery.category}&language=${indexQuery.language}&tool=${indexQuery.tool}&page=${indexQuery.page + 1}` %>
         class=<%= indexQuery.page >= Math.floor((filteredProjectNumber - 1) / 10) + 1 ? "disable" : "" %>>
-        <img src="/images/chevron-right.svg" alt="">
+        <div class="icon-text">
+          <p>Next</p>
+          <img src="/images/chevron-right.svg" alt="">
+        </div>
       </a>
     </div>
   </div>
