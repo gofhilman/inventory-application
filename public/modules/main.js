@@ -12,5 +12,10 @@ setInterval(() => {
   cursor.textContent = headerTyping.cursor;
 }, 120);
 
-deleteButton.addEventListener("click", () => deleteDialog.showModal());
-showDialog.showModal();
+if (deleteButton) {
+  deleteButton.addEventListener("click", () => deleteDialog.showModal());
+}
+
+if (showDialog) {
+  showDialog.showModal();
+}

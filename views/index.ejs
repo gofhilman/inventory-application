@@ -37,15 +37,21 @@
     <% const categoryName = indexQuery.category ? 
       filters.categories.find(item => item.id === indexQuery.category).name : "All projects"; %>
     <h2><%= categoryName[0].toUpperCase() + categoryName.slice(1) %></h2>
-    <p><%= filteredProjectNumber %> items found</p>
-    <div>
+    <p class="item-number"><%= filteredProjectNumber %> items found</p>
+    <div class="cards">
       <% compartedProjects.forEach((item) => { %>
       <article>
-        <a href=<%= `/project/${item.project_id}` %>><img src=<%= item.image %> alt="Project image"></a>
+        <a href=<%= `/project/${item.project_id}` %>>
+          <% if(item.image) { %>
+            <img src=<%= item.image %> alt="Project image">
+          <% } else { %>
+            <div></div>
+          <% }; %> 
+        </a>
         <div>
           <a href=<%= `/project/${item.project_id}` %>>
             <h3><%= item.name %></h3>
-            <div>
+            <div class="category">
               <p>Category:</p>
               <div>
                 <% item.category.forEach((element) => { %>
@@ -55,12 +61,12 @@
             </div>
             <p><%= item.description %></p>
           </a>
-          <p>Source code: <a href=<%= item.source %>><%= item.source %></a></p>
+          <p>Source code: <a href=<%= item.source %> target="_blank" rel="noopener noreferrer"><%= item.source %></a></p>
         </div>
       </article>
       <% }); %>
     </div>
-    <div>
+    <div class="pagination">
       <% Object.keys(indexQuery).forEach(key => {
         if(!indexQuery[key]) indexQuery[key] = "";
       }); %>
