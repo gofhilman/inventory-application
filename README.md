@@ -2,6 +2,8 @@
 
 Hilman's Project Inventory is a web application designed to showcase and manage a collection of projects. It allows users to view project details, filter projects by categories, languages, and tools, and perform CRUD operations on the projects. The application is built with a focus on simplicity, usability, and scalability.
 
+Live: <https://inventory-application-production-d04e.up.railway.app/>
+
 ## Features
 
 - **Project Management**: Add, edit, and delete projects with detailed information.
