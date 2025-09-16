@@ -42,6 +42,9 @@ img {
 
 body {
   background-color: #f8fafc;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 
 aside {
@@ -60,7 +63,7 @@ aside {
 
 main {
   margin-left: 380px;
-  min-height: 100vh;
+  flex: 1;
 }
 
 footer {
@@ -305,6 +308,13 @@ aside button:hover {
   font-weight: 600;
 }
 
+.cards .desc {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
 .category {
   display: flex;
   gap: 12px;
@@ -363,8 +373,7 @@ main.no-filter {
   padding-bottom: 5px;
 }
 
-.form,
-.project {
+.form {
   display: flex;
   flex-direction: column;
   gap: 25px;
@@ -433,6 +442,16 @@ main.no-filter {
   color: red;
 }
 
+.project {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.project > h2 {
+  margin-bottom: 15px;
+}
+
 .project > img {
   border-radius: 12px;
   border: 1px solid #cbd5e1;
@@ -445,5 +464,64 @@ main.no-filter {
 
 .project .info-section a {
   text-decoration-line: underline;
+  color: #475569;
+}
+
+.tags {
+  display: flex;
+  gap: 12px;
+  align-items: center;
   color: #64748b;
+}
+
+.tags > div {
+  display: flex;
+  gap: 10px;
+}
+
+.category-tag,
+.language-tag {
+  padding: 3px 8px;
+  border-radius: 12px;
+}
+
+.category-tag {
+  background-color: #fcd34d;
+  color: #78350f;
+  border: 1px solid #78350f;
+}
+
+.language-tag {
+  background-color: #99f6e4;
+  color: #134e4a;
+  border: 1px solid #134e4a;
+}
+
+.project section h3 {
+  font-size: 1.5rem;
+  font-weight: 500;
+}
+
+.project-buttons {
+  padding-top: 15px;
+  display: flex;
+  gap: 30px;
+  justify-content: space-between;
+}
+
+.project-buttons button {
+  padding: 8px 25px;
+  font-size: 1.3rem;
+  font-weight: 500;
+  color: white;
+  border: none;
+  border-radius: 12px;
+}
+
+.project-buttons .edit {
+  background-color: #3583f7;
+}
+
+.project-buttons .delete {
+  background-color: #f53333;
 }

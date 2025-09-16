@@ -18,4 +18,5 @@ if (deleteButton) {
 
 if (showDialog) {
   showDialog.showModal();
+  deleteButton.addEventListener("click", () => showDialog.showModal());
 }

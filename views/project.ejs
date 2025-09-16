@@ -5,24 +5,24 @@
   <img src="<%= project.image %>" alt="Project image" />
   <% }; %>
   <div class="info-section">
-    <p>Source code: <a href="<%= project.source %>"><%= project.source %></a></p>
+    <p>Source code: <a href="<%= project.source %>" target="_blank" rel="noopener noreferrer"><%= project.source %></a></p>
     <% if (project.website) { %>
-    <p>Website: <a href="<%= project.website %>"><%= project.website %></a></p>
+    <p>Website: <a href="<%= project.website %>" target="_blank" rel="noopener noreferrer"><%= project.website %></a></p>
     <% }; %>
   </div>
-  <div class="info-section">
+  <div class="info-section tags">
     <p>Category:</p>
     <div>
       <% project.category.forEach((item) => { %>
-      <p><%= item %></p>
+      <p class="category-tag"><%= item %></p>
       <% }); %>
     </div>
   </div>
-  <div class="info-section">
+  <div class="info-section tags">
     <p>Language:</p>
     <div>
       <% project.language.forEach((item) => { %>
-      <p><%= item %></p>
+      <p class="language-tag"><%= item %></p>
       <% }); %>
     </div>
   </div>
@@ -35,22 +35,24 @@
       <% }); %>
     </ul>
   </section>
-  <section>
-    <h3>Tech stack</h3>
-    <ul>
-      <% project.stack.split("\n").forEach((item) => { %>
-      <li><%- item %></li>
-      <% }); %>
-    </ul>
-  </section>
-  <div>
+  <% if (project.stack) { %>
+    <section>
+      <h3>Tech stack</h3>
+      <ul>
+        <% project.stack.split("\n").forEach((item) => { %>
+        <li><%- item %></li>
+        <% }); %>
+      </ul>
+    </section>
+  <% }; %>
+  <div class="project-buttons">
     <form action="<%= `/project/${projectId}/edit` %>">
-      <button>
+      <button class="icon-text edit">
         <img src="/images/square-pen.svg" alt="" />
         <p>edit</p>
       </button>
     </form>
-    <button id="delete">
+    <button id="delete" class="icon-text delete">
       <img src="/images/trash-2.svg" alt="" />
       <p>delete</p>
     </button>
