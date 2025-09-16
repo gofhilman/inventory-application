@@ -1,14 +1,16 @@
-<main class="no-filter">
+<main class="no-filter project">
   <%- include("delete-project") %>
   <h2><%= project.name %></h2>
+  <% if (project.image) { %>
   <img src="<%= project.image %>" alt="Project image" />
-  <div>
-    <p>
-      Source code: <a href="<%= project.source %>"><%= project.source %></a>
-    </p>
+  <% }; %>
+  <div class="info-section">
+    <p>Source code: <a href="<%= project.source %>"><%= project.source %></a></p>
+    <% if (project.website) { %>
     <p>Website: <a href="<%= project.website %>"><%= project.website %></a></p>
+    <% }; %>
   </div>
-  <div>
+  <div class="info-section">
     <p>Category:</p>
     <div>
       <% project.category.forEach((item) => { %>
@@ -16,7 +18,7 @@
       <% }); %>
     </div>
   </div>
-  <div>
+  <div class="info-section">
     <p>Language:</p>
     <div>
       <% project.language.forEach((item) => { %>

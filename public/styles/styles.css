@@ -40,6 +40,10 @@ img {
 
 /* custom */
 
+body {
+  background-color: #f8fafc;
+}
+
 aside {
   padding: 20px;
   background-color: #f1f5f9;
@@ -51,13 +55,12 @@ aside {
   min-height: 100vh;
   z-index: 2;
   border-radius: 0 15px 15px 0;
-  box-shadow: 8px 0 10px -4px rgba(0, 0, 0, 0.3);
+  box-shadow: 8px 0 10px -4px rgba(0, 0, 0, 0.15);
 }
 
 main {
   margin-left: 380px;
   min-height: 100vh;
-  background-color: #f8fafc;
 }
 
 footer {
@@ -356,9 +359,12 @@ main.no-filter {
 .no-filter h2 {
   font-size: 2rem;
   font-weight: 600;
+  border-bottom: 1px solid #cbd5e1;
+  padding-bottom: 5px;
 }
 
-.add-form {
+.form,
+.project {
   display: flex;
   flex-direction: column;
   gap: 25px;
@@ -371,21 +377,21 @@ main.no-filter {
   justify-items: start;
 }
 
-.add-form label {
+.form label {
   font-size: 1.1rem;
 }
 
-.add-form input,
-.add-form textarea {
+.form input,
+.form textarea {
   padding: 3px 8px;
   line-height: 1.5;
 }
 
-.add-form textarea {
+.form textarea {
   resize: none;
 }
 
-.add-form button {
+.form button {
   padding: 6px 25px;
   font-size: 1.2rem;
   font-weight: 500;
@@ -425,4 +431,19 @@ main.no-filter {
 
 .error-details {
   color: red;
+}
+
+.project > img {
+  border-radius: 12px;
+  border: 1px solid #cbd5e1;
+}
+
+.project .info-section {
+  font-weight: 500;
+  font-size: 1.1rem;
+}
+
+.project .info-section a {
+  text-decoration-line: underline;
+  color: #64748b;
 }
