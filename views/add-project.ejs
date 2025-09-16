@@ -1,19 +1,19 @@
-<main>
-  <form action="/add" method="post">
+<main class="no-filter">
+  <form action="/add" method="post" class="add-form">
     <h2>Add a project</h2>
     <%- include("partials/errors.ejs") %>
     <p class="required">All required fields are marked with an asterisk (*)</p>
-    <div>
+    <div class="form-body">
       <label for="password">Admin password <span class="required">*</span></label>
       <input type="password" name="password" id="password" required>
       <label for="name">Project name <span class="required">*</span></label>
       <input type="text" name="name" id="name" required>
       <label for="description">Project description</label>
-      <textarea name="description" id="description"></textarea>
+      <textarea name="description" id="description" rows="10"></textarea>
       <label for="features">Features</label>
-      <textarea name="features" id="features"></textarea>
+      <textarea name="features" id="features" rows="10"></textarea>
       <label for="stack">Tech stack</label>
-      <textarea name="stack" id="stack"></textarea>
+      <textarea name="stack" id="stack" rows="10"></textarea>
       <label for="source">Source code URL</label>
       <input type="url" name="source" id="source">
       <label for="website">Website URL</label>
@@ -21,11 +21,11 @@
       <label for="image">Project image URL</label>
       <input type="url" name="image" id="image">
       <label for="category">Category</label>
-      <input type="text" name="category" id="category" placeholder="(Separate multiple items using commas (,))">
+      <input type="text" name="category" id="category" placeholder="Separate multiple items using commas (,)">
       <label for="language">Language</label>
-      <input type="text" name="language" id="language" placeholder="(Separate multiple items using commas (,))">
+      <input type="text" name="language" id="language" placeholder="Separate multiple items using commas (,)">
       <label for="tool">Tool</label>
-      <input type="text" name="tool" id="tool" placeholder="(Separate multiple items using commas (,))">
+      <input type="text" name="tool" id="tool" placeholder="Separate multiple items using commas (,)">
     </div>
     <button>Submit</button>
   </form>

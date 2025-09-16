@@ -216,6 +216,7 @@ aside button:hover {
   align-self: end;
   justify-self: center;
   padding: 6px 25px;
+  font-weight: 500;
 }
 
 .list {
@@ -335,7 +336,7 @@ aside button:hover {
   font-size: 1.2rem;
   font-weight: 500;
   padding-block: 3px;
-  border-radius: 8px;;
+  border-radius: 8px;
 }
 
 .pagination img {
@@ -346,4 +347,82 @@ aside button:hover {
   pointer-events: none;
   cursor: default;
   opacity: 0.2;
+}
+
+main.no-filter {
+  padding: 40px 80px;
+}
+
+.no-filter h2 {
+  font-size: 2rem;
+  font-weight: 600;
+}
+
+.add-form {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+
+.form-body {
+  display: grid;
+  grid-template-columns: max-content auto;
+  gap: 20px;
+  justify-items: start;
+}
+
+.add-form label {
+  font-size: 1.1rem;
+}
+
+.add-form input,
+.add-form textarea {
+  padding: 3px 8px;
+  line-height: 1.5;
+}
+
+.add-form textarea {
+  resize: none;
+}
+
+.add-form button {
+  padding: 6px 25px;
+  font-size: 1.2rem;
+  font-weight: 500;
+}
+
+#password {
+  min-width: 250px;
+}
+
+#name {
+  min-width: 500px;
+}
+
+#description,
+#features,
+#stack,
+#source,
+#website,
+#image,
+#category,
+#language,
+#tool {
+  width: 100%;
+}
+
+.required {
+  font-size: 0.95rem;
+  color: red;
+  font-weight: 500;
+}
+
+.error-msg {
+  color: red;
+  font-weight: 500;
+  font-size: 1.2rem;
+}
+
+.error-details {
+  color: red;
 }

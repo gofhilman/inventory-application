@@ -1,4 +1,4 @@
-<main>
+<main class="no-filter">
   <form action="<%= `/project/${projectId}/edit` %>" method="post">
     <h2>Edit project</h2>
     <%- include("partials/errors.ejs") %>
@@ -21,11 +21,11 @@
       <label for="image">Project image URL</label>
       <input type="url" name="image" id="image" value="<%= project.image %>">
       <label for="category">Category</label>
-      <input type="text" name="category" id="category" value="<%= project.category %>" placeholder="(Separate multiple items using commas (,))">
+      <input type="text" name="category" id="category" value="<%= project.category %>" placeholder="Separate multiple items using commas (,)">
       <label for="language">Language</label>
-      <input type="text" name="language" id="language" value="<%= project.language %>" placeholder="(Separate multiple items using commas (,))">
+      <input type="text" name="language" id="language" value="<%= project.language %>" placeholder="Separate multiple items using commas (,)">
       <label for="tool">Tool</label>
-      <input type="text" name="tool" id="tool" value="<%= project.tool %>" placeholder="(Separate multiple items using commas (,))">
+      <input type="text" name="tool" id="tool" value="<%= project.tool %>" placeholder="Separate multiple items using commas (,)">
     </div>
     <button>Submit</button>
   </form>

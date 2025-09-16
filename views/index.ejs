@@ -35,7 +35,7 @@
   </div>
   <div class="list">
     <% const categoryName = indexQuery.category ? 
-      filters.categories.find(item => item.id === indexQuery.category).name : "All projects"; %>
+      filters.categories.find(item => item.id === indexQuery.category).name : "All categories"; %>
     <h2><%= categoryName[0].toUpperCase() + categoryName.slice(1) %></h2>
     <p class="item-number"><%= filteredProjectNumber %> items found</p>
     <div class="cards">
@@ -76,7 +76,7 @@
       </a>
       <p><%= indexQuery.page %></p>
       <a href=<%= `/?category=${indexQuery.category}&language=${indexQuery.language}&tool=${indexQuery.tool}&page=${indexQuery.page + 1}` %>
-        class=<%= indexQuery.page === Math.floor((filteredProjectNumber - 1) / 10) + 1 ? "disable" : "" %>>
+        class=<%= indexQuery.page >= Math.floor((filteredProjectNumber - 1) / 10) + 1 ? "disable" : "" %>>
         <img src="/images/chevron-right.svg" alt="">
       </a>
     </div>
