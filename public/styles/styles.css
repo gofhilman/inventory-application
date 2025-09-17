@@ -50,15 +50,21 @@ body {
 aside {
   padding: 20px;
   background-color: #f1f5f9;
-  display: flex;
-  flex-direction: column;
-  gap: 30px;
   position: fixed;
   width: 380px;
   min-height: 100vh;
   z-index: 2;
   border-radius: 0 15px 15px 0;
   box-shadow: 8px 0 10px -4px rgba(0, 0, 0, 0.15);
+  display: grid;
+  grid-template-columns: 340px auto;
+  gap: 10px;
+}
+
+aside .sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
 }
 
 main {
@@ -115,7 +121,7 @@ nav > ul > li > a {
   padding: 10px 20px;
 }
 
-aside > header {
+aside header {
   display: flex;
   flex-direction: column;
   gap: 30px;
@@ -166,7 +172,7 @@ dialog h4 {
 
 .dialog-buttons {
   display: flex;
-  justify-content: space-between;  
+  justify-content: space-between;
 }
 
 .dialog-buttons button {
@@ -571,4 +577,33 @@ dialog input {
 
 .project-buttons .delete {
   background-color: #f53333;
+}
+
+@media (max-width: 600px) {
+  aside {
+    width: 420px;
+    left: -365px;
+  }
+
+  .sidebar-button {
+    background-image: url("/images/panel-left-open.svg");
+    width: 40px;
+    height: 40px;
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+
+  main {
+    margin-left: 40px;
+  }
+
+  .index {
+    padding-top: 50px;
+  }
+
+  .filter {
+    top: -90px;
+    left: 40px;
+  }
 }
