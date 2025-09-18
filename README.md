@@ -12,6 +12,7 @@ Live: <https://inventory-application-production-d04e.up.railway.app/>
 - **Dynamic Tags**: Display categories, languages, and tools as tags for each project.
 - **Validation**: Form validation for adding and editing projects.
 - **Admin Authentication**: Password-protected actions for creating, editing, and deleting projects.
+- **Responsive Design**: Optimized layout across devices, ensuring seamless interaction on various screens.
 
 ## Tech Stack
 
@@ -54,7 +55,3 @@ Live: <https://inventory-application-production-d04e.up.railway.app/>
    ```
 
 5. Access the application at `http://localhost:3000`.
-
-## To Do
-
-- Add responsive design

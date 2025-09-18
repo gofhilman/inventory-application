@@ -519,6 +519,10 @@ dialog input {
   font-size: 1.1rem;
 }
 
+.project .info-section > p {
+  overflow-wrap: anywhere;
+}
+
 .project .info-section a {
   text-decoration-line: underline;
   color: #475569;
@@ -529,11 +533,13 @@ dialog input {
   gap: 12px;
   align-items: center;
   color: #64748b;
+  flex-wrap: wrap;
 }
 
 .tags > div {
   display: flex;
   gap: 10px;
+  flex-wrap: wrap;
 }
 
 .category-tag,
@@ -686,6 +692,15 @@ dialog input {
     min-width: 0;
     width: 100%;
   }
+
+  .tags {
+    gap: 10px;
+  }
+
+  .tags > div {
+    gap: 7px;
+  }
+
 }
 
 @keyframes open-sidebar {
