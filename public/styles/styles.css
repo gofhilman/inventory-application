@@ -634,7 +634,7 @@ dialog input {
   }
 
   .filter {
-    top: -285px;
+    top: -300px;
     left: 55px;
     padding-bottom: 10px;
   }
@@ -645,6 +645,7 @@ dialog input {
   }
 
   .filter button {
+    margin-top: 15px;
     justify-self: stretch;
   }
 
@@ -715,10 +716,10 @@ dialog input {
 
 @keyframes open-topbar {
   85% {
-    transform: translateY(300px);
+    transform: translateY(315px);
   }
 
   to {
-    transform: translateY(285px);
+    transform: translateY(300px);
   }
 }
