@@ -1,5 +1,5 @@
 <main class="index">
-  <div class="filter">
+  <div class="filter" id="topbar">
     <p>Filter by</p>
     <form action="/">
       <div>
@@ -32,6 +32,7 @@
       <input type="hidden" name="page" value="1">
       <button>Apply</button>
     </form>
+    <div class="topbar-button" id="topbar-button"></div>
   </div>
   <div class="list">
     <% const categoryName = indexQuery.category ? 
@@ -52,7 +53,7 @@
           <a href=<%= `/project/${item.project_id}` %>>
             <h3><%= item.name %></h3>
             <div class="category">
-              <p>Category:</p>
+              <p class="category-text">Category:</p>
               <div>
                 <% item.category.forEach((element) => { %>
                 <p><%= element %></p>

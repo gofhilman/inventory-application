@@ -344,6 +344,7 @@ dialog h4 {
 .cards > article > div > p {
   font-weight: 500;
   padding-inline: 25px;
+  overflow-wrap: anywhere;
 }
 
 .cards > article > div > p > a {
@@ -368,11 +369,13 @@ dialog h4 {
   gap: 12px;
   align-items: center;
   font-weight: 500;
+  flex-wrap: wrap;
 }
 
 .category > div {
   display: flex;
   gap: 10px;
+  flex-wrap: wrap;
 }
 
 .category > div > p {
@@ -616,17 +619,59 @@ dialog input {
     transform: rotate(180deg);
   }
 
-  main {
-    margin-left: 40px;
+  main, footer {
+    margin-left: 55px;
   }
 
   .index {
-    padding-top: 50px;
+    padding-top: 70px;
   }
 
   .filter {
-    top: -90px;
-    left: 40px;
+    top: -290px;
+    left: 55px;
+    padding-bottom: 10px;
+  }
+
+  .filter > form {
+    grid-template-columns: auto;
+    gap: 12px;
+  }
+
+  .filter button {
+    justify-self: stretch;
+  }
+
+  #topbar.open {
+    animation: open-topbar 0.35s ease-out forwards;
+  }
+
+  .topbar-button {
+    margin-top: 10px;
+    background-image: url("/images/panel-top-open.svg");
+    width: 40px;
+    height: 40px;
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    transition: transform 0.35s ease-out;
+    align-self: end;
+  }
+
+  .open .topbar-button {
+    transform: rotate(180deg);
+  }
+
+  .cards > article {
+    grid-template-columns: auto;
+  }
+
+  .category-text {
+    display: none;
+  }
+
+  .category > div {
+    gap: 7px;
   }
 }
 
@@ -637,5 +682,15 @@ dialog input {
 
   to {
     transform: translateX(325px);
+  }
+}
+
+@keyframes open-topbar {
+  85% {
+    transform: translateY(310px);
+  }
+
+  to {
+    transform: translateY(290px);
   }
 }

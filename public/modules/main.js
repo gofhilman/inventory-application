@@ -7,6 +7,8 @@ const deleteDialog = document.querySelector("#delete-dialog");
 const showDialog = document.querySelector("#show-dialog");
 const sidebarButton = document.querySelector("#sidebar-button");
 const sidebar = document.querySelector("aside");
+const topbarButton = document.querySelector("#topbar-button");
+const topbar = document.querySelector("#topbar");
 
 setInterval(() => {
   headerTyping.type();
@@ -26,3 +28,9 @@ if (showDialog) {
 sidebarButton.addEventListener("click", () => {
   sidebar.classList.toggle("open");
 });
+
+if (topbar) {
+  topbarButton.addEventListener("click", () => {
+    topbar.classList.toggle("open");
+  });
+}
