@@ -5,6 +5,8 @@ const cursor = document.querySelector("#cursor");
 const deleteButton = document.querySelector("#delete");
 const deleteDialog = document.querySelector("#delete-dialog");
 const showDialog = document.querySelector("#show-dialog");
+const sidebarButton = document.querySelector("#sidebar-button");
+const sidebar = document.querySelector("aside");
 
 setInterval(() => {
   headerTyping.type();
@@ -20,3 +22,7 @@ if (showDialog) {
   showDialog.showModal();
   deleteButton.addEventListener("click", () => showDialog.showModal());
 }
+
+sidebarButton.addEventListener("click", () => {
+  sidebar.classList.toggle("open");
+});

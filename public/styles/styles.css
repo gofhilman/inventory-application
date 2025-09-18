@@ -581,8 +581,25 @@ dialog input {
 
 @media (max-width: 600px) {
   aside {
-    width: 420px;
-    left: -365px;
+    width: 380px;
+    left: -325px;
+    grid-template-columns: 300px auto;
+  }
+
+  pre {
+    font-size: 1.2rem;
+  }
+
+  nav > ul {
+    font-size: 1rem;
+  }
+
+  aside button {
+    font-size: 1rem;
+  }
+
+  aside.open {
+    animation: open-sidebar 0.35s ease-out forwards;
   }
 
   .sidebar-button {
@@ -592,6 +609,11 @@ dialog input {
     background-size: contain;
     background-position: center;
     background-repeat: no-repeat;
+    transition: transform 0.35s ease-out;
+  }
+
+  .open .sidebar-button {
+    transform: rotate(180deg);
   }
 
   main {
@@ -605,5 +627,15 @@ dialog input {
   .filter {
     top: -90px;
     left: 40px;
+  }
+}
+
+@keyframes open-sidebar {
+  85% {
+    transform: translateX(340px);
+  }
+
+  to {
+    transform: translateX(325px);
   }
 }
