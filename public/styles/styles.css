@@ -673,6 +673,19 @@ dialog input {
   .category > div {
     gap: 7px;
   }
+
+  main.no-filter {
+    padding: 30px;
+  }
+
+  .form-body {
+    grid-template-columns: auto;
+  }
+
+  #password, #name {
+    min-width: 0;
+    width: 100%;
+  }
 }
 
 @keyframes open-sidebar {
