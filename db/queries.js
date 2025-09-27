@@ -179,6 +179,11 @@ async function updateProject(
     WHERE id = $8;`,
     [name, description, features, stack, source, website, image, projectId]
   );
+  for (const filter of ["category", "language", "tool"]) {
+    await pool.query(`DELETE FROM project_${filter} WHERE project_id = $1;`, [
+      projectId,
+    ]);
+  }
   await insertFilters(projectId, category, language, tool);
 }
 
