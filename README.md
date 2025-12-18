@@ -16,14 +16,13 @@ Live: <https://inventory-application-production-d04e.up.railway.app/>
 
 ## Tech Stack
 
-- **EJS**: Embedded JavaScript templates for dynamic rendering.
-- **CSS**: Tailwind-inspired custom styles for a modern UI.
 - **Node.js**: JavaScript runtime for server-side development.
 - **Express.js**: Web framework for building the application.
 - **PostgreSQL**: Relational database for storing project data.
 - **express-validator**: Middleware for form validation.
 - **dotenv**: Environment variable management.
 - **pg**: PostgreSQL client for Node.js.
+- **EJS**: Embedded JavaScript templates for dynamic rendering.
 
 ## How to Run
 
